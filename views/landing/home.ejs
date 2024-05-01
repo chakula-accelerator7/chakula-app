@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./includes/head', {title: title}) %>
+    <body>
+        <%- include('./includes/landing-nav') %>
+        <section class="section-home">
+            <h1 class="heading">Hack Your Meal Planning</h1>
+            <p class="text">
+                Looks like less thinking and more eating are on the menu
+                tonight. <a href="/landing/about">Learn More</a>
+            </p>
+            <picture class="image">
+                <source
+                    media="(max-width: 429px)"
+                    srcset="../images/hero-mobile.svg"
+                />
+                <source
+                    media="(min-width: 430px) and (max-width: 1280px)"
+                    srcset="../images/hero-tablet.svg"
+                />
+                <source
+                    media="(min-width: 1280px)"
+                    srcset="../images/hero-desktop.svg"
+                />
+                <img
+                    src="../images/hero-desktop.svg"
+                    alt="A vector image of a woman sitting down while holding a basket of groceries in one arm"
+                />
+            </picture>
+            <a class="btn btn-large btn-cta" href="/app/register"
+                >Get Started</a
+            >
+            <p class="text-cta">
+                Already have an account?
+                <a href="/app/login">Login here</a>
+            </p>
+        </section>
+        <%- include('./includes/landing-footer') %>
+    </body>
+</html>

@@ -1,0 +1,146 @@
+@use "./mixins" as *;
+
+.article-about {
+    position: relative;
+    .inner-container {
+        display: flex;
+        // border: 1px solid;
+        width: 100%;
+        overflow: hidden;
+
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        @include media(mobile) {
+            display: block;
+            width: auto;
+            overflow: auto;
+        }
+    }
+
+    @include media(mobile) {
+        text-align: center;
+    }
+
+    .heading {
+        color: var(--accent);
+        margin-bottom: 0.76rem;
+        &::after {
+            display: block;
+            content: "";
+            background-color: var(--accent);
+            height: 3px;
+            margin-top: 0.82rem;
+            @include media(mobile) {
+                margin-inline: 30%;
+            }
+        }
+    }
+
+    .image {
+        margin-block: 1.625rem;
+        @include media(mobile) {
+            margin-top: 7rem;
+            margin-bottom: 5.75rem;
+            margin-inline: auto;
+        }
+    }
+    .section {
+        min-height: 100vh;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 100%;
+        padding: 0.8rem;
+        @include media(mobile) {
+            min-height: auto;
+            margin-bottom: 5.6rem;
+        }
+
+        @include media(desktop) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 11rem;
+
+            &:nth-of-type(odd):not(:last-of-type) {
+                grid-template-areas:
+                    "heading image"
+                    "text image"
+                    "text image ";
+                text-align: left;
+            }
+            &:nth-of-type(even):not(:last-of-type) {
+                grid-template-areas:
+                    "image heading"
+                    "image text"
+                    "image text";
+                text-align: right;
+            }
+
+            .heading {
+                grid-area: heading;
+                &::after {
+                    margin-inline: 0;
+                }
+            }
+
+            .image {
+                grid-area: image;
+            }
+            p {
+                grid-area: text;
+            }
+        }
+    }
+
+    .section-register {
+        @include media(tablet) {
+            // border: 1px solid;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas:
+                "image heading"
+                "image text"
+                "image button";
+            text-align: right;
+            column-gap: 4.25rem;
+
+            .heading {
+                grid-area: heading;
+
+                &::after {
+                    margin-inline: 0;
+                }
+            }
+            .image {
+                grid-area: image;
+            }
+            .btn {
+                grid-area: button;
+                align-self: center;
+                justify-self: end;
+            }
+            p {
+                grid-area: text;
+            }
+        }
+    }
+
+    .nav-buttons {
+        position: absolute;
+        bottom: 0;
+        // border: 1px solid;
+        right: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-block: 1.15rem;
+        gap: 0.3rem;
+
+        @include media(mobile) {
+            display: none;
+        }
+    }
+
+    // @include media;
+}

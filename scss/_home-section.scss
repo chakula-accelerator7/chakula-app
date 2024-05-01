@@ -1,0 +1,58 @@
+@use "./mixins" as *;
+
+.section-home {
+    background-color: var(--accent);
+    color: var(--white);
+    border-radius: var(--radius-section);
+    --section-padding: 2.2rem;
+    padding: var(--section-padding);
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:
+        "heading"
+        "image"
+        "text"
+        "cta-btn"
+        "cta-text";
+
+    .heading {
+        width: 90%;
+        margin-bottom: 0;
+    }
+    .text {
+        grid-area: text;
+    }
+    .image {
+        grid-area: image;
+        transform: translateX(var(--section-padding)) translateY(-10%);
+    }
+    .btn-cta {
+        grid-area: cta-btn;
+        align-self: center;
+    }
+    .text-cta {
+        grid-area: cta-text;
+    }
+
+    @include media(mobile) {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    @include media(desktop) {
+        grid-template-columns: 0.4fr 0.6fr;
+        grid-template-areas:
+            "heading image"
+            "text image"
+            "cta-btn image"
+            "cta-text image";
+        .image {
+            transform: translateX(0) translateY(0) scale(1.2);
+            align-self: end;
+        }
+
+        .heading {
+            width: auto;
+        }
+    }
+}

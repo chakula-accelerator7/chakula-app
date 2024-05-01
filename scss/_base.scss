@@ -1,0 +1,135 @@
+@use "./mixins" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    --burnt-orange: #df4a0a;
+    --banana-mania: #ffeb83;
+    --mint-green: #64d096;
+    --deep-teal: #058992;
+    --black-haze: #fffef5;
+    --jacarta: #372a69;
+    --dark-lavender: #8b7ebd;
+    --st-patricks-blue: #025cb4;
+    --dark-gold: #e9a237;
+    --carrot-orange: #e8711a;
+    --ivory: #fffded;
+    --white: #ffffff;
+    --accent: var(--carrot-orange);
+    --radius-button: 0.8rem;
+    --radius-section: 3.125rem;
+}
+
+body {
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    color: var(--jacarta);
+    font-size: 1.25rem;
+    background-color: var(--ivory);
+    @include media(tablet) {
+        font-size: 1.5rem;
+    }
+    @include media(desktop) {
+        font-size: 2rem;
+    }
+}
+
+// Remember this one....in case you
+
+a {
+    color: var(--white);
+}
+
+.container {
+    width: 90%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    @include media(tablet) {
+        font-size: 3rem;
+    }
+    display: flex;
+    align-items: center;
+}
+
+h1,
+h2 {
+    // 48 64 96 semibold
+    line-height: 1;
+    font-size: 3rem;
+    font-weight: 600;
+    white-space: normal;
+    margin-top: 0;
+
+    @include media(tablet) {
+        font-size: 4rem;
+    }
+
+    @include media(desktop) {
+        font-size: 6rem;
+    }
+}
+
+h2 {
+    font-weight: 700;
+}
+
+.unstyled-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+// Components like buttons, inputs etc
+
+.btn {
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    border-radius: var(--radius-button);
+    text-decoration: none;
+    text-align: center;
+    font-weight: 700;
+}
+
+.btn-large {
+    padding-block: 1.3rem;
+    font-size: 1.5rem;
+    max-width: 26rem;
+    @include media(desktop) {
+        font-size: 2rem;
+    }
+}
+
+.btn-cta {
+    background-color: var(--deep-teal);
+    color: var(--white);
+}
+
+.btn-round {
+    border-radius: 50%;
+    aspect-ratio: 1;
+}
+
+.btn-scroll-features {
+    background-color: var(--jacarta);
+    color: transparent;
+    &.highlighted {
+        background-color: var(--dark-lavender);
+    }
+}
+
+.btn-register {
+    background-color: var(--carrot-orange);
+    color: var(--white);
+    padding-inline: 4rem;
+}

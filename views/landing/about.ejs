@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./includes/head', {title: title}) %>
+    <body>
+        <%- include('./includes/landing-nav') %>
+
+        <div class="container">
+            <article id="article-about" class="article-about">
+                <div class="inner-container">
+                    <section id="intro" class="section section-intro">
+                        <h1 class="heading">Hungry for a change</h1>
+                        <p>
+                            We are too! At Chakula, we're all about making
+                            eating well effortless and fun.
+                        </p>
+                        <img
+                            class="image"
+                            src="../images/hungry.svg"
+                            alt="A vector image of a person sitting inside a bowl eating some food"
+                        />
+                    </section>
+                    <section id="heavy" class="section section-heavy">
+                        <h2 class="heading">Let us do the heavy lifting</h2>
+                        <img
+                            class="image"
+                            src="../images/heavy.svg"
+                            alt="A vector image of a person chopping vegetables on a chopping board"
+                        />
+                        <p>
+                            Say goodbye to meal planning stress with
+                            personalized recipes and grocery lists tailored to
+                            your tastes and needs
+                        </p>
+                    </section>
+                    <section id="savings" class="section section-savings">
+                        <h2 class="heading">
+                            Save up for more amazing meals in the future
+                        </h2>
+                        <img
+                            class="image"
+                            src="../images/save-more.svg"
+                            alt="A vector image of a couple holding a notebook that is supposedly their budget tracker"
+                        />
+                        <p>
+                            We&apos;ll help you save money by finding the best
+                            deals at local stores. Let's revolutionize the way
+                            you eat together.
+                        </p>
+                    </section>
+                    <section id="register" class="section section-register">
+                        <h2 class="heading">Sign Up Now</h2>
+                        <img
+                            class="image"
+                            src="../images/sign-up-image.svg"
+                            alt="A vector image of a lady standing in front of a stove making a stir fry"
+                        />
+                        <p>
+                            Try it! We&apos;re confident you&apos;ll love it
+                            here. That&apos;s why we&apos;re inviting you to sit
+                            at our table for free.
+                        </p>
+                        <a
+                            class="btn btn-large btn-register"
+                            href="/app/register"
+                            >Start your free trial</a
+                        >
+                    </section>
+                    <div class="nav-buttons">
+                        <button
+                            data-scroll-into="intro"
+                            class="btn btn-round btn-scroll-features highlighted"
+                        ></button>
+                        <button
+                            data-scroll-into="heavy"
+                            class="btn btn-round btn-scroll-features"
+                        ></button>
+                        <button
+                            data-scroll-into="savings"
+                            class="btn btn-round btn-scroll-features"
+                        ></button>
+                        <button
+                            data-scroll-into="register"
+                            class="btn btn-round btn-scroll-features"
+                        ></button>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <%- include('./includes/landing-footer') %>
+    </body>
+</html>
