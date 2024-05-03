@@ -43,6 +43,10 @@ body {
 
 a {
     color: var(--white);
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .container {
@@ -54,7 +58,7 @@ a {
 .logo {
     font-size: 2.5rem;
     color: var(--accent);
-    text-decoration: none;
+
     font-weight: 900;
     text-transform: uppercase;
     @include media(tablet) {
@@ -62,6 +66,9 @@ a {
     }
     display: flex;
     align-items: center;
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 h1,
@@ -97,13 +104,6 @@ i {
 }
 
 // Components like buttons, inputs etc
-
-a {
-    text-decoration: none;
-    &:hover {
-        text-decoration: underline;
-    }
-}
 
 .btn {
     display: inline-block;

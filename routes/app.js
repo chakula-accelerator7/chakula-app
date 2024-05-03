@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/app/register", (req, res) => {
-    res.send("Register for your account");
+    res.render("./app/register");
 });
 
 router.get("/app/login", (req, res) => {

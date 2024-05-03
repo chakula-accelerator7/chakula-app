@@ -14,6 +14,10 @@ app.use(landingPage);
 
 app.use(appRouter);
 
+app.get("/", (req, res) => {
+    res.redirect("/landing");
+});
+
 app.listen(port, () => {
     console.log("Listening ");
 });

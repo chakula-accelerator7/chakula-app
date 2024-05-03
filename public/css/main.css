@@ -69,6 +69,10 @@ body {
 
 a {
   color: var(--white);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 .container {
@@ -80,7 +84,6 @@ a {
 .logo {
   font-size: 2.5rem;
   color: var(--accent);
-  text-decoration: none;
   font-weight: 900;
   text-transform: uppercase;
   display: flex;
@@ -90,6 +93,9 @@ a {
   .logo {
     font-size: 3rem;
   }
+}
+.logo:hover {
+  text-decoration: none;
 }
 
 h1,
@@ -125,13 +131,6 @@ h2 {
 
 i {
   display: inline-block;
-}
-
-a {
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
 }
 
 .btn {
