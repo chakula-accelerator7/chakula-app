@@ -15,5 +15,5 @@ app.use(landingPage);
 app.use(appRouter);
 
 app.listen(port, () => {
-    console.log("Listening");
+    console.log("Listening ");
 });

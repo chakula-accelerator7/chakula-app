@@ -28,6 +28,9 @@ body {
     color: var(--jacarta);
     font-size: 1.25rem;
     background-color: var(--ivory);
+    display: grid;
+    min-height: 100%;
+
     @include media(tablet) {
         font-size: 1.5rem;
     }
@@ -89,7 +92,18 @@ h2 {
     list-style: none;
 }
 
+i {
+    display: inline-block;
+}
+
 // Components like buttons, inputs etc
+
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
 
 .btn {
     display: inline-block;
