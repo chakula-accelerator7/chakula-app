@@ -1,0 +1,403 @@
+[
+    {
+        "category": "protein-animal",
+        "name": "Chicken",
+        "pantryCategory": "meat-seafood-eggs"
+    },
+    {
+        "category": "protein-animal",
+        "name": "Turkey",
+        "pantryCategory": "meat-seafood-eggs"
+    },
+    {
+        "category": "protein-animal",
+        "name": "Tuna",
+        "pantryCategory": "meat-seafood-eggs"
+    },
+    {
+        "category": "protein-animal",
+        "name": "Lean beef",
+        "pantryCategory": "meat-seafood-eggs"
+    },
+    {
+        "category": "protein-animal",
+        "name": "Pork tenderloin",
+        "pantryCategory": "meat-seafood-eggs"
+    },
+    {
+        "category": "protein-animal",
+        "name": "Eggs",
+        "pantryCategory": "meat-seafood-eggs"
+    },
+    {
+        "category": "protein-milk",
+        "name": "Greek yogurt",
+        "pantryCategory": "meat-seafood-eggs"
+    },
+    {
+        "category": "protein-milk",
+        "name": "Cottage cheese",
+        "pantryCategory": "dairy"
+    },
+    {
+        "category": "protein-plant",
+        "name": "Tempeh",
+        "pantryCategory": "plant-protein"
+    },
+    {
+        "category": "protein-plant",
+        "name": "Edamame",
+        "pantryCategory": "plant-protein"
+    },
+    {
+        "category": "protein-milk",
+        "name": "Low Fat milk",
+        "pantryCategory": "dairy"
+    },
+    {
+        "category": "carbohydrates-legume",
+        "name": "Lentils",
+        "pantryCategory": "beans-and-legumes"
+    },
+    {
+        "category": "carbohydrates-legume",
+        "name": "Chickpeas",
+        "pantryCategory": "beans-and-legumes"
+    },
+    {
+        "category": "carbohydrates-legume",
+        "name": "Black beans",
+        "pantryCategory": "beans-and-legumes"
+    },
+    {
+        "category": "carbohydrates-legume",
+        "name": "Kidney beans",
+        "pantryCategory": "beans-and-legumes"
+    },
+    {
+        "category": "protein-animal",
+        "name": "Salmon",
+        "pantryCategory": "meat-seafood-eggs"
+    },
+    {
+        "category": "carbohydrates-grain",
+        "name": "Whole wheat bread",
+        "pantryCategory": "bread-grain-cereal"
+    },
+    {
+        "category": "carbohydrates-grain",
+        "name": "Brown rice",
+        "pantryCategory": "bread-grain-cereal"
+    },
+    {
+        "category": "carbohydrates-grain",
+        "name": "Quinoa",
+        "pantryCategory": "bread-grain-cereal"
+    },
+    {
+        "category": "carbohydrates-grain",
+        "name": "Oats",
+        "pantryCategory": "bread-grain-cereal"
+    },
+    {
+        "category": "carbohydrates-grain",
+        "name": "Barley",
+        "pantryCategory": "bread-grain-cereal"
+    },
+    {
+        "category": "carbohydrates-grain",
+        "name": "Buckwheat",
+        "pantryCategory": "bread-grain-cereal"
+    },
+    {
+        "category": "carbohydrates-grain",
+        "name": "Millet",
+        "pantryCategory": "bread-grain-cereal"
+    },
+    {
+        "category": "carbohydrates-grain",
+        "name": "Whole grain pasta",
+        "pantryCategory": "bread-grain-cereal"
+    },
+    {
+        "category": "carbohydrates-starch",
+        "name": "Sweet potatoes",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "carbohydrates-starch",
+        "name": "Potatoes",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "carbohydrates-starch",
+        "name": "Butternut squash",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "carbohydrates-starch",
+        "name": "Acorn squash",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "carbohydrates-starch",
+        "name": "Pumpkin",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "carbohydrates-starch",
+        "name": "Corn",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "carbohydrates-starch",
+        "name": "Peas",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "Vegetables",
+        "name": "Broccoli",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "Vegetables",
+        "name": "Spinach",
+        "pantryCategory": "produce"
+    },
+    { "category": "Vegetables", "name": "Kale", "pantryCategory": "produce" },
+    {
+        "category": "Vegetables",
+        "name": "Brussels sprouts",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "Vegetables",
+        "name": "Cauliflower",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "Vegetables",
+        "name": "Asparagus",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "Vegetables",
+        "name": "Zucchini",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "Vegetables",
+        "name": "Green beans",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "Vegetables",
+        "name": "Peppers",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "Vegetables",
+        "name": "Tomatoes",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "Vegetables",
+        "name": "Cucumbers",
+        "pantryCategory": "produce"
+    },
+    { "category": "Vegetables", "name": "Onions", "pantryCategory": "produce" },
+    { "category": "Vegetables", "name": "Garlic", "pantryCategory": "produce" },
+    { "category": "Fruits", "name": "Apples", "pantryCategory": "produce" },
+    { "category": "Fruits", "name": "Bananas", "pantryCategory": "produce" },
+    { "category": "Fruits", "name": "Oranges", "pantryCategory": "produce" },
+    {
+        "category": "Fruits",
+        "name": "Strawberries",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "Fruits",
+        "name": "Blueberries",
+        "pantryCategory": "produce"
+    },
+    {
+        "category": "Fruits",
+        "name": "Raspberries",
+        "pantryCategory": "produce"
+    },
+    { "category": "Fruits", "name": "Grapes", "pantryCategory": "produce" },
+    { "category": "Fruits", "name": "Pineapple", "pantryCategory": "produce" },
+    { "category": "Fruits", "name": "Mango", "pantryCategory": "produce" },
+    { "category": "Fruits", "name": "Papaya", "pantryCategory": "produce" },
+    { "category": "Fruits", "name": "Kiwi", "pantryCategory": "produce" },
+    { "category": "Fruits", "name": "Watermelon", "pantryCategory": "produce" },
+    { "category": "Fruits", "name": "Cantaloupe", "pantryCategory": "produce" },
+    { "category": "Fruits", "name": "Honeydew", "pantryCategory": "produce" },
+    {
+        "category": "Healthy Fats",
+        "name": "Avocado",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Almonds",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Walnuts",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Cashews",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Pistachios",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Chia seeds",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Flaxseeds",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Pumpkin seeds",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Sunflower seeds",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Olives",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Extra virgin olive oil",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Coconut oil",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Almond butter",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Peanut butter",
+        "pantryCategory": "seeds-nuts-oils"
+    },
+    {
+        "category": "Healthy Fats",
+        "name": "Hummus",
+        "pantryCategory": "beans-and-legumes"
+    },
+    { "category": "Seasoning", "name": "Salt", "pantryCategory": "seasoning" },
+    {
+        "category": "Seasoning",
+        "name": "Pepper",
+        "pantryCategory": "seasoning"
+    },
+    {
+        "category": "Seasoning",
+        "name": "Cayenne",
+        "pantryCategory": "seasoning"
+    },
+    {
+        "category": "Seasoning",
+        "name": "Paprika",
+        "pantryCategory": "seasoning"
+    },
+    { "category": "Seasoning", "name": "Chili", "pantryCategory": "seasoning" },
+    {
+        "category": "Seasoning",
+        "name": "Cinnamon",
+        "pantryCategory": "seasoning"
+    },
+    {
+        "category": "Seasoning",
+        "name": "Nutmeg",
+        "pantryCategory": "seasoning"
+    },
+    {
+        "category": "Seasoning",
+        "name": "Cilantro",
+        "pantryCategory": "seasoning"
+    },
+    {
+        "category": "Seasoning",
+        "name": "Parsley",
+        "pantryCategory": "seasoning"
+    },
+    { "category": "Seasoning", "name": "Basil", "pantryCategory": "seasoning" },
+    {
+        "category": "Seasoning",
+        "name": "Oregano",
+        "pantryCategory": "seasoning"
+    },
+    { "category": "Seasoning", "name": "Thyme", "pantryCategory": "seasoning" },
+    { "category": "Seasoning", "name": "Dill", "pantryCategory": "seasoning" },
+    {
+        "category": "Seasoning",
+        "name": "Vinegar",
+        "pantryCategory": "seasoning"
+    },
+    {
+        "category": "Seasoning",
+        "name": "Soy Sauce",
+        "pantryCategory": "seasoning"
+    },
+    { "category": "Seasoning", "name": "Mirin", "pantryCategory": "seasoning" },
+    {
+        "category": "Seasoning",
+        "name": "Hoisin Sauce",
+        "pantryCategory": "seasoning"
+    },
+    {
+        "category": "Seasoning",
+        "name": "Oyster Sauce",
+        "pantryCategory": "seasoning"
+    },
+    {
+        "category": "Seasoning",
+        "name": "Worcestershire Sauce",
+        "pantryCategory": "seasoning"
+    },
+    {
+        "category": "Seasoning",
+        "name": "Coconut Aminos",
+        "pantryCategory": "seasoning"
+    },
+    {
+        "category": "Seasoning",
+        "name": "Bouillon",
+        "pantryCategory": "seasoning"
+    },
+    { "category": "Seasoning", "name": "Honey", "pantryCategory": "seasoning" },
+    {
+        "category": "Seasoning",
+        "name": "Mayonnaise",
+        "pantryCategory": "seasoning"
+    },
+    {
+        "category": "Seasoning",
+        "name": "Sour Cream",
+        "pantryCategory": "seasoning"
+    }
+]

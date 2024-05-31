@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../includes/head', {title: 'Pantry Setup'}) %>
+    <body>
+        <%- include('../includes/app-nav', {user: user}) %>
+        <section class="section-pantry-setup">
+            <div class="container">
+                <div class="text">
+                    <p>
+                        Select the healthy items you like to eat the most and
+                        also the recipes you currently have in your pantry , so
+                        we can add them to your pantry list.
+                    </p>
+                    <p>
+                        Our AI can suggest recipes that include these
+                        ingredients.
+                    </p>
+                </div>
+                <form
+                    class="form-ingredient-selector"
+                    action="/app/setup-pantry"
+                    id="ingredient-selector"
+                    method="post"
+                >
+                    <div id="pantry" class="pantry">
+                        <div class="pantry-shelf">
+                            <% produce.forEach(element => { %>
+                            <label
+                                class="pantry-label pantry-label-<%= element.pantryCategory %>"
+                            >
+                                <%= element.name %>
+                                <input
+                                    type="checkbox"
+                                    value="<%= element._id %>"
+                                    name="ingredients"
+                                />
+                            </label>
+                            <% }) %>
+                        </div>
+                        <div class="pantry-shelf">
+                            <% dairy.forEach(element => { %>
+                            <label
+                                class="pantry-label pantry-label-<%= element.pantryCategory %>"
+                            >
+                                <%= element.name %>
+                                <input
+                                    type="checkbox"
+                                    value="<%= element._id %>"
+                                    name="ingredients"
+                                />
+                            </label>
+                            <% }) %>
+                        </div>
+                        <div class="pantry-shelf">
+                            <% plantProtein.forEach(element => { %>
+                            <label
+                                class="pantry-label pantry-label-<%= element.pantryCategory %>"
+                            >
+                                <%= element.name %>
+                                <input
+                                    type="checkbox"
+                                    value="<%= element._id %>"
+                                    name="ingredients"
+                                />
+                            </label>
+                            <% }) %>
+                        </div>
+                        <div class="pantry-shelf">
+                            <% breadGrainCereal.forEach(element => { %>
+                            <label
+                                class="pantry-label pantry-label-<%= element.pantryCategory %>"
+                            >
+                                <%= element.name %>
+                                <input
+                                    type="checkbox"
+                                    value="<%= element._id %>"
+                                    name="ingredients"
+                                />
+                            </label>
+                            <% }) %>
+                        </div>
+                        <div class="pantry-shelf">
+                            <% seasoning.forEach(element => { %>
+                            <label
+                                class="pantry-label pantry-label-<%= element.pantryCategory %>"
+                            >
+                                <%= element.name %>
+                                <input
+                                    type="checkbox"
+                                    value="<%= element._id %>"
+                                    name="ingredients"
+                                />
+                            </label>
+                            <% }) %>
+                        </div>
+                        <div class="pantry-shelf">
+                            <% beansAndLegumes.forEach(element => { %>
+                            <label
+                                class="pantry-label pantry-label-<%= element.pantryCategory %>"
+                            >
+                                <%= element.name %>
+                                <input
+                                    type="checkbox"
+                                    value="<%= element._id %>"
+                                    name="ingredients"
+                                />
+                            </label>
+                            <% }) %>
+                        </div>
+                        <div class="pantry-shelf">
+                            <% meatSeafoodEggs.forEach(element => { %>
+                            <label
+                                class="pantry-label pantry-label-<%= element.pantryCategory %>"
+                            >
+                                <%= element.name %>
+                                <input
+                                    type="checkbox"
+                                    value="<%= element._id %>"
+                                    name="ingredients"
+                                />
+                            </label>
+                            <% }) %>
+                        </div>
+                        <div class="pantry-shelf">
+                            <% nutSeedsOil.forEach(element => { %>
+                            <label
+                                class="pantry-label pantry-label-<%= element.pantryCategory %>"
+                            >
+                                <%= element.name %>
+                                <input
+                                    type="checkbox"
+                                    value="<%= element._id %>"
+                                    name="ingredients"
+                                />
+                            </label>
+                            <% }) %>
+                        </div>
+                    </div>
+                </form>
+                <div class="pantry-submit">
+                    <button
+                        class="btn btn-large btn-accent"
+                        form="ingredient-selector"
+                    >
+                        Next
+                    </button>
+                </div>
+            </div>
+        </section>
+        <%- include('../includes/main-footer') %>
+        <script src="../js/pantry-items.js"></script>
+        <script src="../js/menu.js"></script>
+    </body>
+</html>

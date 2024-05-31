@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../includes/app-head', {title: `Chakula - Recipes Page for
+    ${user.name}`}) %>
+    <body>
+        <%- include('../includes/app-nav') %>
+
+        <main class="main-recipes">
+            <div class="container">
+                <h1 class="app-page-heading">
+                    <span>Recipes</span>
+                </h1>
+                <div class="flex-row">
+                    <section class="section-recipe-gen flex-col col-recipe-gen">
+                        <h2 class="sub-heading">
+                            Ask our Chef AI for a healthy recipe!
+                        </h2>
+                        <p class="text">
+                            Recommendations will be made based on your personal
+                            information, preferences and other configuration
+                            options.
+                        </p>
+                        <button
+                            id="btn-get-recipe"
+                            type="button"
+                            class="button btn-large btn-accent btn-recipe-generator"
+                        >
+                            Generate Recipe
+                        </button>
+                        <div
+                            class="modal fade recipe-modal"
+                            id="recipe-modal"
+                            tabindex="-1"
+                            data-bs-backdrop="static"
+                            aria-labelledby="recipeModalLabel"
+                            aria-hidden="true"
+                        >
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button
+                                            type="button"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                            class="button close-button btn-round"
+                                        >
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <%# Modal Recipe Config %> <%# Modal Recipe%>
+
+                    <section class="recipeList flex-col col-generated-recipes">
+                        <h2 class="heading">My Saved Recipes</h2>
+                        <div
+                            id="recipe-category-container"
+                            class="categoryContainer"
+                        ></div>
+                    </section>
+                </div>
+            </div>
+        </main>
+        <%- include('../includes/main-footer') %>
+        <script
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/toastify-js"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"
+        ></script>
+        <script src="../../js/menu.js"></script>
+        <script src="../../js/recipeConfig.js"></script>
+        <script src="../../js/recipe-scrollIntoView.js"></script>
+    </body>
+</html>

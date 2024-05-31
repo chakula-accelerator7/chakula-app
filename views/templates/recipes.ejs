@@ -1,0 +1,63 @@
+<ul class="unstyled-list generated-recipe-list">
+    <% recipeList.forEach(recipe => { %>
+    <li class="recipe-list-item">
+        <h3 class="recipe-title"><%= recipe.title %></h3>
+        <figure>
+            <img
+                src="<%= recipe.image %>"
+                alt="An image of the recipe <%= recipe.title  %>"
+            />
+        </figure>
+
+        <ul class="diet-tags unstyled-list attributes">
+            <li>Time: <%= recipe.readyInMinutes%> Minutes</li>
+            <% recipe?.diets?.forEach(diet => { %>
+            <li><%= diet %></li>
+            <% }) %>
+        </ul>
+
+        <div class="recipe-section">
+            <h4>Ingredients</h4>
+            <ul>
+                <% recipe?.nutrition?.ingredients.forEach(ingredient => { %>
+                <li>
+                    <%= ingredient.amount%> <%= ingredient.unit%> of <%=
+                    ingredient.name%>
+                </li>
+                <% }) %>
+            </ul>
+        </div>
+        <div class="recipe-section">
+            <h4>Cooking Instructions</h4>
+            <ul>
+                <% recipe.analyzedInstructions[0]?.steps.forEach(instruction =>
+                { %>
+                <li><%= instruction.step %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <div class="recipe-section">
+            <h4>Caloric Breakdown</h4>
+            <table class="table-macros">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% recipe.nutrition.nutrients.forEach(nutrient => { %> <%
+                    if(nutrient.name === "Carbohydrates" || nutrient.name ===
+                    "Protein" || nutrient.name === "Fat" || nutrient.name ===
+                    "Net Carbohydrates" || nutrient.name === "Calories" ) {%>
+                    <tr>
+                        <td><%= nutrient.name %></td>
+                        <td><%= nutrient.amount %></td>
+                    </tr>
+                    <% } %> <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </li>
+    <% }) %>
+</ul>

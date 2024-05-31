@@ -1,0 +1,62 @@
+<div class="recipe-featured recipe-info-display">
+    <div class="recipe-header">
+        <h3 class="recipe-title"><%= recipe.recipeName %></h3>
+        <button
+            class="button btn-save"
+            data-recipe-id="<%= recipe._id %>"
+            data-button-role="save"
+            data-saved="false"
+        >
+            <i class="fa-regular fa-bookmark"></i>
+        </button>
+    </div>
+    <figure>
+        <img
+            src="data:image/png;base64,<%= recipe.imageData %>"
+            alt="An image of the recipe <%= recipe.recipeName  %>"
+        />
+    </figure>
+
+    <ul class="diet-tags unstyled-list attributes">
+        <li>Time: <%= recipe.preparationTime%> Minutes</li>
+    </ul>
+
+    <div class="recipe-section">
+        <h4>Ingredients</h4>
+        <ul>
+            <% recipe?.ingredientList.forEach(ingredient => { %>
+            <li><%= ingredient %></li>
+            <% }) %>
+        </ul>
+    </div>
+    <div class="recipe-section">
+        <h4>Cooking Instructions</h4>
+        <ol>
+            <% recipe.preparationInstructions.forEach(instruction => { %>
+            <li><%= instruction %></li>
+            <% }) %>
+        </ol>
+    </div>
+    <div class="recipe-section">
+        <h4>Caloric Breakdown</h4>
+        <table class="table-macros">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Object.keys(recipe?.macronutrientInfo).forEach((name)=> { %>
+                <tr>
+                    <td><%= name %></td>
+                    <td>
+                        <%= recipe?.macronutrientInfo[name] %> <% name ===
+                        "calories" ? 'kcal' : 'g' %>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -2,19 +2,17 @@
 
 .article-about {
     position: relative;
+    // overflow: none;
+    margin-top: 20rem;
+
     .inner-container {
         display: flex;
-        // border: 1px solid;
-        width: 100%;
         overflow: hidden;
-
-        -ms-overflow-style: none;
-        scrollbar-width: none;
 
         @include media(mobile) {
             display: block;
-            width: auto;
-            overflow: auto;
+            // width: auto;
+            // overflow: auto;
         }
     }
 
@@ -25,12 +23,14 @@
     .heading {
         color: var(--accent);
         margin-bottom: 0.76rem;
+
         &::after {
-            display: block;
-            content: "";
-            background-color: var(--accent);
-            height: 3px;
-            margin-top: 0.82rem;
+            // display: block;
+            // content: "";
+            // background-color: var(--accent);
+            // height: 3px;
+            // margin-top: 0.82rem;
+            @include pseudoElementUnderline($color: var(--accent));
             @include media(mobile) {
                 margin-inline: 30%;
             }
@@ -51,6 +51,7 @@
         flex-shrink: 0;
         flex-basis: 100%;
         padding: 0.8rem;
+        margin-inline: auto;
         @include media(mobile) {
             min-height: auto;
             margin-bottom: 5.6rem;
