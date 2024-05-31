@@ -13,3 +13,19 @@
         }
     }
 }
+
+@mixin pseudoElementUnderline($color) {
+    display: block;
+    content: "";
+    background-color: $color;
+    height: 3px;
+    margin-top: 0.82rem;
+}
+
+@mixin underlineOnHover($color) {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    &:hover {
+        text-decoration-color: $color;
+    }
+}

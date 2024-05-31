@@ -3,6 +3,7 @@
 .section-home {
     background-color: var(--accent);
     color: var(--white);
+    margin-top: 20rem;
     border-radius: var(--radius-section);
     --section-padding: 2.2rem;
     padding: var(--section-padding);
@@ -37,6 +38,7 @@
     @include media(mobile) {
         width: 90%;
         margin: 0 auto;
+        margin-top: 20rem;
     }
 
     @include media(desktop) {

@@ -1,6 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+    <%- include('../includes/head', {title: "Sign in to your account"}) %>
     <body>
-        <h2>Sign in to your account</h2>
+        <%- include('../includes/main-nav') %>
+        <section class="section-auth">
+            <div class="auth-area">
+                <h1>Log in</h1>
+                <% if(message !== false) {%>
+                <p><%= message%></p>
+                <% } %>
+                <form
+                    action="/app/login-local"
+                    class="auth-form-local"
+                    method="post"
+                >
+                    <label>
+                        <% if(validationError !== false &&
+                        validationError?.emailAddress) { %>
+                        <input
+                            type="email"
+                            name="emailAddress"
+                            placeholder="Email"
+                            required
+                            value="<%= validationError?.emailAddress?.value %>"
+                        />
+                        <%} else { %>
+                        <input
+                            type="email"
+                            name="emailAddress"
+                            placeholder="Email"
+                            required
+                        />
+                        <% } %>
+                    </label>
+                    <% if(validationError !== false &&
+                    validationError?.emailAddress) {%>
+                    <p><%= validationError?.emailAddress?.msg%></p>
+                    <% }%>
+                    <label>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            required
+                        />
+                    </label>
+                    <% if(validationError !== false &&
+                    validationError?.password) {%>
+                    <p><%= validationError?.password?.msg%></p>
+                    <% }%>
+                    <button class="btn btn-large btn-auth-register">
+                        Log In
+                    </button>
+                </form>
+                <p class="auth-text">
+                    Don't have an account <a href="/app/register">Sign up</a>
+                    <span>Or</span>
+                </p>
+
+                <form action="" class="auth-form-fed">
+                    <button class="btn btn-large btn-auth-facebook btn-auth">
+                        <i class="fa-brands fa-facebook"></i>
+                        Sign in with facebook
+                    </button>
+                </form>
+                <form action="" class="auth-form-fed">
+                    <button class="btn btn-large btn-auth-google btn-auth">
+                        <img src="../images/google.svg" alt="" />Sign in with
+                        google
+                    </button>
+                </form>
+                <form action="" class="auth-form-fed">
+                    <button class="btn btn-large btn-auth-apple btn-auth">
+                        <i class="fa-brands fa-apple"></i>Sign in with apple
+                    </button>
+                </form>
+            </div>
+            <img
+                class="auth-section-image"
+                src="../images/auth-screen-image.svg"
+                alt=""
+            />
+        </section>
+        <%- include('../includes/main-footer') %>
+        <script src="../js/menu.js" type="module"></script>
     </body>
 </html>

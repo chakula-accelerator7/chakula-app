@@ -1,0 +1,60 @@
+@use "./mixins" as *;
+
+.section-auth {
+    margin-top: 20rem;
+    color: var(--white);
+    .auth-area {
+        background-color: var(--accent);
+        text-align: center;
+        padding: 2rem;
+        border-radius: var(--radius-section);
+    }
+
+    form {
+        max-width: 445px;
+        margin-inline: auto;
+    }
+
+    // This is for the form buttons that are sending post requests to the facebook, google and apple endpoints
+    .auth-form-fed {
+        display: flex;
+        justify-content: center;
+    }
+    label {
+        display: block;
+        margin-bottom: 0.75rem;
+    }
+
+    input {
+        border-radius: var(--radius-input);
+        border: none;
+        outline: none;
+        padding: 1rem;
+        width: 100%;
+        color: var(--deep-teal);
+    }
+
+    .auth-section-image {
+        display: none;
+        align-self: center;
+        @include media(desktop) {
+            display: block;
+            transform: scale(1.2);
+        }
+    }
+
+    .auth-text span {
+        display: block;
+    }
+
+    @include media(mobile) {
+        width: 90%;
+        margin-inline: auto;
+        max-width: 1440px;
+    }
+
+    @include media(desktop) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

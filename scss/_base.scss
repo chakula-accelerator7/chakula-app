@@ -8,17 +8,27 @@
     --banana-mania: #ffeb83;
     --mint-green: #64d096;
     --deep-teal: #058992;
+    --deep-green: #188845;
     --black-haze: #fffef5;
     --jacarta: #372a69;
     --dark-lavender: #8b7ebd;
     --st-patricks-blue: #025cb4;
     --dark-gold: #e9a237;
     --carrot-orange: #e8711a;
+    --copper-red: #ad705b;
+    --facebook-blue: #1877f2;
+    --royal-blue: #2580da;
+    --pistachio-green: #b7d064;
+    --teal-green: #046269;
+    --goldenrod: #eda526;
     --ivory: #fffded;
     --white: #ffffff;
+    --burnt-sienna: #8d2f06;
     --accent: var(--carrot-orange);
     --radius-button: 0.8rem;
     --radius-section: 3.125rem;
+    --radius-input: 1.25rem;
+    --radius-element: 0.9375rem;
 }
 
 body {
@@ -28,8 +38,10 @@ body {
     color: var(--jacarta);
     font-size: 1.25rem;
     background-color: var(--ivory);
-    display: grid;
+    // display: grid;
     min-height: 100%;
+    line-height: 1.1;
+    overflow-x: hidden;
 
     @include media(tablet) {
         font-size: 1.5rem;
@@ -39,20 +51,25 @@ body {
     }
 }
 
-// Remember this one....in case you
+// Remember this one....
 
 a {
     color: var(--white);
     text-decoration: none;
+    display: inline-block;
     &:hover {
         text-decoration: underline;
     }
 }
 
+::placeholder {
+    color: currentColor;
+}
+
 .container {
+    margin: 0 auto;
     width: 90%;
     max-width: 1440px;
-    margin: 0 auto;
 }
 
 .logo {
@@ -105,28 +122,37 @@ i {
 
 // Components like buttons, inputs etc
 
-.btn {
+// btn and button is used because of a namespace clash in the recipes page between bootstrap style name and project style name
+.btn,
+.button {
     display: inline-block;
     cursor: pointer;
     border: none;
     border-radius: var(--radius-button);
     text-decoration: none;
     text-align: center;
-    font-weight: 700;
+    font-weight: 600;
+    color: var(--white);
+    transition: color 200ms ease-in, background-color 200ms ease-in;
 }
 
 .btn-large {
     padding-block: 1.3rem;
     font-size: 1.5rem;
+    width: 100%;
     max-width: 26rem;
     @include media(desktop) {
         font-size: 2rem;
     }
 }
 
-.btn-cta {
+.btn-cta,
+.btn-auth-register {
     background-color: var(--deep-teal);
-    color: var(--white);
+    &:hover {
+        color: var(--deep-teal);
+        background-color: var(--white);
+    }
 }
 
 .btn-round {
@@ -142,8 +168,231 @@ i {
     }
 }
 
-.btn-register {
+.btn-accent {
     background-color: var(--carrot-orange);
-    color: var(--white);
-    padding-inline: 4rem;
+    &:hover {
+        background-color: var(--white);
+        color: var(--carrot-orange);
+        text-decoration-color: transparent;
+    }
 }
+
+.btn-auth {
+    display: flex;
+    gap: 0.85rem;
+    align-items: center;
+    padding: 1rem;
+    margin-block: 0.625rem;
+    text-align: left;
+    // max-width: auto;
+}
+
+.btn-auth-facebook {
+    background-color: var(--facebook-blue);
+    &:hover {
+        color: var(--facebook-blue);
+        background-color: var(--white);
+    }
+}
+
+.btn-auth-google {
+    color: #0000008c;
+    &:hover {
+        color: #000000;
+    }
+}
+
+.btn-auth-apple {
+    // color: var(--white);
+    background-color: #020202;
+    &:hover {
+        color: #020202;
+        background-color: var(--white);
+    }
+}
+
+.btn-recipe-generator {
+    margin-block: 2.4rem;
+}
+
+.btn-card {
+    background-color: transparent;
+    color: var(--deep-green);
+    max-width: 5.6rem;
+    font-size: 1rem;
+    line-height: 1;
+    text-align: left;
+    padding-block: 1rem;
+    padding-inline: 0;
+    @include underlineOnHover($color: var(--deep-green));
+}
+.btn-pantry-display {
+    max-width: fit-content;
+    color: var(--deep-teal);
+    font-size: 0.875rem;
+    margin: 0;
+    padding: 0;
+    @include underlineOnHover($color: var(--deep-teal));
+}
+
+.btn-recipe-scroll {
+    background-color: var(--deep-green);
+    padding: 1rem;
+    font-size: 1.25rem;
+    &:hover {
+        color: var(--deep-green);
+        background-color: var(--white);
+    }
+}
+
+.btn-save {
+    background-color: transparent;
+    color: var(--jacarta);
+    font-size: 3.3rem;
+    line-height: 1;
+}
+
+.close-button {
+    // This is for the recipes area, when you open a recipe the close button for the modal
+    width: 2.75rem;
+    background-color: var(--jacarta);
+    font-size: 1.75rem;
+    &:hover {
+        background-color: red;
+    }
+}
+
+.close-button--white {
+    background-color: var(--white);
+    color: var(--jacarta);
+}
+
+.btn-shopping-list-toggle {
+    background-color: var(--jacarta);
+    &:hover {
+        color: var(--jacarta);
+        background-color: var(--white);
+    }
+}
+
+.btn-categories {
+    padding: 0.5rem 3.56rem;
+    border-radius: 0.9375rem;
+    border: 2px solid;
+    background-color: transparent;
+
+    &.produce {
+        color: var(--deep-teal);
+        &:hover,
+        &[data-current-selected-category] {
+            background-color: var(--deep-teal);
+            color: white;
+        }
+    }
+    &.dairy {
+        color: var(--royal-blue);
+        &:hover,
+        &[data-current-selected-category] {
+            background-color: var(--royal-blue);
+            color: white;
+        }
+    }
+    &.plant-protein {
+        //
+        color: var(--carrot-orange);
+        &:hover,
+        &[data-current-selected-category] {
+            background-color: var(--banana-mania);
+            color: var(--carrot-orange);
+        }
+    }
+    &.bread-grain-cereal {
+        color: var(--copper-red);
+        &:hover,
+        &[data-current-selected-category] {
+            background-color: var(--copper-red);
+            color: white;
+        }
+    }
+    &.seasoning {
+        color: var(--mint-green);
+        &:hover,
+        &[data-current-selected-category] {
+            background-color: var(--mint-green);
+            color: white;
+        }
+    }
+    &.beans-and-legumes {
+        color: var(--jacarta);
+        &:hover,
+        &[data-current-selected-category] {
+            background-color: var(--jacarta);
+            color: white;
+        }
+    }
+    &.meat-seafood-eggs {
+        color: var(--burnt-orange);
+        &:hover,
+        &[data-current-selected-category] {
+            background-color: var(--burnt-orange);
+            color: white;
+        }
+    }
+    &.seeds-nuts-oils {
+        color: var(--goldenrod);
+        &:hover,
+        &[data-current-selected-category] {
+            background-color: var(--goldenrod);
+            color: white;
+        }
+    }
+}
+
+.btn-menu {
+    background-color: white;
+    color: var(--deep-teal);
+    border: 1px solid;
+    font-size: 0.92rem;
+    &:hover {
+        background-color: var(--deep-teal);
+        color: white;
+    }
+}
+
+.btn-grocery-menu-reveal {
+    width: auto;
+    border: none;
+}
+
+.btn-grocery-menu-select {
+    width: 100%;
+    display: flex;
+    gap: 0.5625rem;
+}
+
+.btn-search {
+    background-color: transparent;
+    color: var(--deep-teal);
+    font-size: 1.125rem;
+    margin: 0;
+    padding: 0;
+    // width: 100%;
+    text-align: left;
+    @include underlineOnHover($color: var(--deep-teal));
+}
+
+.btn-grocery-menu-delete-btn {
+    color: var(--burnt-orange);
+    &:hover {
+        background-color: var(--burnt-orange);
+        color: var(--white);
+    }
+}
+
+// main,
+// article,
+// section {
+//     &:first-of-type {
+//         margin-top: 20rem;
+//     }
+// }

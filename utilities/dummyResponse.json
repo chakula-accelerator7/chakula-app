@@ -1,0 +1,241 @@
+{
+    "noFrills": {
+        "results": [
+            {
+                "productName": "Sweet Potato Chews Dog Treats",
+                "productBrand": "Caledon Farms",
+                "productPrice": "9.99",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Butternut Squash",
+                "productBrand": null,
+                "productPrice": "7.07",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Plant Based Chickpea and Sweet Potato Veggie Burgers",
+                "productBrand": "President's Choice",
+                "productPrice": "7.00",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "5 Minute Potato, Egg and Veggie Breakfast Bowl",
+                "productBrand": "McCain",
+                "productPrice": "6.29",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Red Onions, 3 lb Bag",
+                "productBrand": "Farmer's Market",
+                "productPrice": "6.29",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Organic Sweet Potatoes, 3 lb Bag",
+                "productBrand": "PC Organics",
+                "productPrice": "5.99",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Red Potatoes, 5 lb Bag",
+                "productBrand": "President's Choice",
+                "productPrice": "5.99",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "White Potatoes, 5 lb Bag",
+                "productBrand": "President's Choice",
+                "productPrice": "5.99",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Krinkle Cut Sweet Potato",
+                "productBrand": "Terra",
+                "productPrice": "5.79",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Butter Sage Sweet Potato Gnocchi",
+                "productBrand": "President's Choice",
+                "productPrice": "5.00",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Sweet Potato Veggie Snaps",
+                "productBrand": "President's Choice",
+                "productPrice": "4.99",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Flavour Crisp Sweet Potato Strips",
+                "productBrand": "CAVENDISH FARMS",
+                "productPrice": "4.79",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Sweet Chili & Sour Cream flavour kettle cooked potato chips 200g",
+                "productBrand": "Miss Vickies",
+                "productPrice": "4.79",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Sweet & Spicy Ketchup Flavour Kettle Cooked Potato Chips",
+                "productBrand": "Miss Vickies",
+                "productPrice": "4.79",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Sweet Potato Chunks",
+                "productBrand": "President's Choice",
+                "productPrice": "4.49",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Japanese Yams",
+                "productBrand": null,
+                "productPrice": "4.15",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Organic Carrots, 2 lb Bag",
+                "productBrand": "PC Organics",
+                "productPrice": "3.99",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Potato Chips Hot 'N' Sweet Chilli",
+                "productBrand": "Lay's",
+                "productPrice": "3.99",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Handcrafted-Style Chips, BBQ Sweet Potato Chips",
+                "productBrand": "Hardbite",
+                "productPrice": "3.99",
+                "storeUrl": "https://www.nofrills.ca/"
+            },
+            {
+                "productName": "Sweet Potatoes, 5 lb bag",
+                "productBrand": "Farmer's Market",
+                "productPrice": "3.88",
+                "storeUrl": "https://www.nofrills.ca/"
+            }
+        ],
+        "lowestPrice": {
+            "productName": "Sweet Potatoes, 5 lb bag",
+            "productBrand": "Farmer's Market",
+            "productPrice": "3.88",
+            "storeUrl": "https://www.nofrills.ca/"
+        }
+    },
+    "loblaws": {
+        "results": [
+            {
+                "productName": "Sweet Potato Chews Dog Treats",
+                "productBrand": "Caledon Farms",
+                "productPrice": "9.99"
+            },
+            {
+                "productName": "Masala Sweet Potato",
+                "productBrand": "The Pie Commission",
+                "productPrice": "9.99"
+            },
+            {
+                "productName": "Butternut Squash",
+                "productBrand": null,
+                "productPrice": "9.55"
+            },
+            {
+                "productName": "Sweet Potatoes, 5 lb bag",
+                "productBrand": "Farmer's Market",
+                "productPrice": "7.99"
+            },
+            {
+                "productName": "Plant Based Chickpea and Sweet Potato Veggie Burgers",
+                "productBrand": "President's Choice",
+                "productPrice": "7.49"
+            },
+            {
+                "productName": "Red Onions, 3 lb Bag",
+                "productBrand": "Farmer's Market",
+                "productPrice": "6.99"
+            },
+            {
+                "productName": "Red Potatoes, 5 lb Bag",
+                "productBrand": "President's Choice",
+                "productPrice": "6.99"
+            },
+            {
+                "productName": "White Potatoes, 5 lb Bag",
+                "productBrand": "President's Choice",
+                "productPrice": "6.99"
+            },
+            {
+                "productName": "Jamaican Sweet Potatoes",
+                "productBrand": null,
+                "productPrice": "6.16"
+            },
+            {
+                "productName": "Superfries® Sweet Potato Plank Cut Fries",
+                "productBrand": "McCain",
+                "productPrice": "5.49"
+            },
+            {
+                "productName": "Superfries® Sweet Potato Crinkle Cut Fries",
+                "productBrand": "McCain",
+                "productPrice": "5.49"
+            },
+            {
+                "productName": "Bistro Selects™ Sweet Potato Frites",
+                "productBrand": "McCain",
+                "productPrice": "5.49"
+            },
+            {
+                "productName": "Potato Pancakes",
+                "productBrand": "McCain",
+                "productPrice": "5.49"
+            },
+            {
+                "productName": "Superfries® Extra Crispy Straight Cut Fries",
+                "productBrand": "McCain",
+                "productPrice": "5.49"
+            },
+            {
+                "productName": "Superfries® Rosemary & Garlic Crinkle Cut Fries",
+                "productBrand": "McCain",
+                "productPrice": "5.49"
+            },
+            {
+                "productName": "Superfries® Extra Crispy Crinkle Cut Fries",
+                "productBrand": "McCain",
+                "productPrice": "5.49"
+            },
+            {
+                "productName": "Superfries® Extra Crispy Spicy Straight Cut Fries",
+                "productBrand": "McCain",
+                "productPrice": "5.49"
+            },
+            {
+                "productName": "Tasti Taters® - Tater Tots",
+                "productBrand": "McCain",
+                "productPrice": "5.49"
+            },
+            {
+                "productName": "Smiles® - Smiley Face Fries",
+                "productBrand": "McCain",
+                "productPrice": "5.49"
+            },
+            {
+                "productName": "Super Spirals® - Curly Fries",
+                "productBrand": "McCain",
+                "productPrice": "5.49"
+            }
+        ],
+        "lowestPrice": {
+            "productName": "Super Spirals® - Curly Fries",
+            "productBrand": "McCain",
+            "productPrice": "5.49"
+        }
+    }
+}

@@ -10,4 +10,4 @@ router.get("/landing/about", (req, res) => {
     res.render("./landing/about", { title: "Welcome to Chakula - About Page" });
 });
 
-module.exports = { landingPage: router };
+module.exports = router;

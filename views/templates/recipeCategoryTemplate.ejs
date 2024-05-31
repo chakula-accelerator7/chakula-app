@@ -1,0 +1,60 @@
+<ul id="recipe-category-list" class="recipe-category-list unstyled-list">
+    <% if (featured !== false) { %>
+    <li class="recipe-card featured">
+        <img
+            src="data:image/png;base64,<%= featured.image %>"
+            alt="An image of the recipe <%= featured.recipeName  %>"
+        />
+        <div class="recipe-card__info">
+            <figcaption><%= featured.recipeName %></figcaption>
+            <button
+                class="button btn-card"
+                data-show-recipe="featured"
+                data-recipe-id="<%= featured._id %>"
+            >
+                See More
+            </button>
+        </div>
+    </li>
+
+    <% } else {%>
+    <li class="recipe-card recipe-card--no-content">
+        <p>No new recipes have been generated</p>
+    </li>
+    <%} %> <% if(sortedRecipes.length <= 0) { %>
+    <li class="recipe-card recipe-card--no-content">
+        <p>
+            Click on the generate button to start saving recipes or add the
+            featured recipe to your saved recipes
+        </p>
+    </li>
+    <%} else {%> <% for (const recipe of sortedRecipes) { %>
+    <li class="recipe-card">
+        <img
+            src="data:image/png;base64,<%= recipe.image %>"
+            alt="An image of the recipe <%= recipe.recipeName  %>"
+        />
+        <div class="recipe-card__info">
+            <figcaption><%= recipe.recipeName %></figcaption>
+            <button
+                class="button btn-card"
+                data-show-recipe="recent"
+                data-recipe-id="<%= recipe._id %>"
+            >
+                See More
+            </button>
+        </div>
+    </li>
+    <% } %> <%} %>
+</ul>
+<div id="recipe-scroller-controls" class="controls">
+    <button
+        class="button btn-round btn-recipe-scroll"
+        id="recipe-scroll-previous"
+    >
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button class="button btn-round btn-recipe-scroll" id="recipe-scroll-next">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+</div>

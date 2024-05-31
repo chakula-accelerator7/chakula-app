@@ -1,4 +1,4 @@
-<header class="header header-landing">
+<header class="header main-header">
     <div class="container grid">
         <a class="logo" href="/landing">
             <picture>
@@ -18,23 +18,43 @@
             </picture>
             <span>chakula</span>
         </a>
-        <nav id="nav-landing" class="nav-landing">
+        <nav id="nav-landing" class="nav-bar">
             <button id="nav-menu-btn" class="nav-menu-btn">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            <ul
-                id="nav-menu"
-                class="nav-menu unstyled-list"
-                data-visible="false"
-            >
-                <li><a class="nav-link" href="/landing/about">about</a></li>
-                <li><a class="nav-link" href="/landing/pricing">pricing</a></li>
-                <li>
-                    <a class="nav-link nav-link-register" href="/app/register"
-                        >sign up</a
-                    >
-                </li>
-            </ul>
+            <div id="nav-menu" class="nav-bar__menuWrapper">
+                <div class="nav-bar__menuHeader">
+                    <picture>
+                        <source
+                            media="(max-width: 429px)"
+                            srcset="../images/nav-fruit-small.svg"
+                        />
+                        <source
+                            media="(min-width: 430px) and (max-width: 1280px)"
+                            srcset="../images/nav-fruit-med.svg"
+                        />
+                        <source
+                            media="(min-width: 1280px)"
+                            srcset="../images/nav-fruit-large.svg"
+                        />
+                        <img src="../images/nav-logo-chakula.svg" alt="" />
+                    </picture>
+                    <span class="nav-bar__menuTitle" id="menu-title">Menu</span>
+                </div>
+                <ul class="nav-bar__menu unstyled-list">
+                    <li><a class="nav-link" href="/landing/about">about</a></li>
+                    <li>
+                        <a class="nav-link" href="/landing/pricing">pricing</a>
+                    </li>
+                    <li>
+                        <a
+                            class="nav-link nav-link-register"
+                            href="/app/register"
+                            >sign up</a
+                        >
+                    </li>
+                </ul>
+            </div>
         </nav>
     </div>
 </header>

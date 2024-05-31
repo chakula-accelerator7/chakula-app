@@ -1,0 +1,8 @@
+<% if(shoppingList.length <= 0) { %>
+<li class="shopping-list-item">
+    Get started by exploring your pantry and adding items that you might need to
+    create a recipe.
+</li>
+<% } else {%> <% shoppingList.forEach((element)=> { %>
+<li class="shopping-list-item"><%= element.name %></li>
+<% }) %> <%} %>

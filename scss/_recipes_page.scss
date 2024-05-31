@@ -1,0 +1,247 @@
+@use "./mixins" as *;
+
+.main-recipes {
+    // This is temporary pending when the design looks sort of decent
+    min-height: 60vh;
+    margin-top: 20rem;
+
+    & .app-page-heading {
+        font-size: 2.5rem;
+
+        @include media(desktop) {
+            font-size: 4rem;
+            &:after {
+                max-width: 22rem;
+            }
+        }
+        &:after {
+            @include pseudoElementUnderline($color: var(--jacarta));
+            margin-right: 50%;
+        }
+    }
+
+    .section-recipe-gen {
+        .sub-heading {
+            font-size: 1.5rem;
+            margin-block: 1.9rem;
+            @include media(desktop) {
+                font-size: 2.25rem;
+            }
+        }
+        .text {
+            margin-top: 1.5rem;
+            margin-bottom: 0;
+        }
+    }
+
+    .recipeList {
+        // min-height: 20.75rem;
+        --section-padding: 2rem;
+        position: relative;
+        background-color: var(--banana-mania);
+        margin-block: 2rem;
+        padding: var(--section-padding);
+        padding-right: 0;
+        padding-bottom: 5rem;
+        box-shadow: 6px 6px 20px 0px #00000041;
+        border-radius: 2.8rem;
+        margin-inline: calc(-1 * 9%);
+        // overflow: hidden;
+        & > .heading {
+            display: block;
+            font-size: 2rem;
+            align-self: center;
+            margin-bottom: 2.125rem;
+            text-transform: capitalize;
+            @include media(tablet) {
+                font-size: 2.5rem;
+            }
+        }
+        @include media(desktop) {
+            width: 55rem;
+            margin-inline: 0;
+            // margin-left: 0;
+            // margin-left: 63px;
+            margin-right: calc(-1 * 18%);
+        }
+        .btn-recipe-scroll {
+            position: absolute;
+
+            top: 50%;
+            transform: translateY(-50%);
+
+            &:first-of-type {
+                // Same as the padding of the recipe list
+                left: var(--section-padding);
+            }
+
+            &:last-of-type {
+                right: var(--section-padding);
+                @include media(desktop) {
+                    // Same as the right margin of the recipe list
+                    right: 15%;
+                }
+            }
+        }
+    }
+
+    .flex-row {
+        @include media(desktop) {
+            display: flex;
+        }
+    }
+}
+
+.recipe-modal {
+    .modal-content {
+        border: none;
+        background-color: var(--white);
+        font-size: 1.25rem;
+    }
+
+    .modal-body {
+        padding-top: none;
+    }
+
+    .spinner-image {
+        margin: 0 auto;
+    }
+
+    .modal-header {
+        padding-block: 0;
+        justify-content: flex-end;
+        // display: block;
+        border: none;
+        padding-right: none;
+    }
+
+    .generated-recipe-list {
+        .recipe-list-item + .recipe-list-item {
+            margin-top: 3.6rem;
+        }
+    }
+
+    .recipe-info-display {
+        .recipe-header {
+            display: flex;
+            .button {
+                margin-inline: auto;
+            }
+        }
+        .recipe-title {
+            font-size: 2.5rem;
+        }
+
+        figure {
+            margin-block: 2.5rem;
+        }
+
+        img {
+            margin: 0 auto;
+        }
+
+        .attributes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-block: 2.68rem 1.0625rem;
+
+            li {
+                border: 1px solid;
+                border-radius: var(--radius-element);
+                padding: 0.5rem;
+            }
+        }
+
+        .recipe-section + .recipe-section {
+            margin-top: 1rem;
+        }
+    }
+}
+
+.recipe-card {
+    --padding-inline: 1.5rem;
+
+    background-color: var(--white);
+    box-shadow: 6px 6px 20px 0px #00000041;
+    border-radius: 2.8rem;
+    // grid-area: heading;
+
+    width: 18.05rem;
+    @include media(tablet) {
+        width: 22.875rem;
+    }
+
+    .recipe-card__info {
+        padding: var(--padding-inline) 2rem;
+    }
+
+    .heading {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    // display: grid;
+    // grid-template-columns: min-content auto;
+    // column-gap: 1.1875rem;
+    // grid-template-areas:
+    //     "heading heading"
+    //     "text text"
+    //     "image figcaption"
+    //     "image figcaption"
+    //     "image button";
+    img {
+        // grid-area: image;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+    }
+
+    .button {
+        // grid-area: button;
+    }
+    figcaption {
+        // grid-area: figcaption;
+        font-size: 1.125rem;
+    }
+    p {
+        // grid-area: text;
+    }
+
+    &.featured {
+        // @include media(desktop) {
+        //     img {
+        //         max-width: 18rem;
+        //     }
+        // }
+    }
+}
+
+.recipe-card--no-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+    line-height: 1.1;
+}
+
+.recipe-category-list {
+    display: flex;
+    flex-wrap: nowrap;
+    // border: 1px solid;
+    gap: 0.875rem;
+    overflow-x: hidden;
+
+    .recipe-card {
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+}
+
+// This is to apply and remove the margin from the cards. For the time being since there is no implementation of favorites then its looking like a side by side thing
+
+// .recipe-card + .recipe-card {
+//     margin-top: 1.5rem;
+
+//     @include media(desktop) {
+//         margin-top: initial;
+//     }
+// }

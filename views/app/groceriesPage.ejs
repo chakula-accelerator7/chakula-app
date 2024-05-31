@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../includes/app-head', {title: title}) %>
+    <body>
+        <%- include('../includes/app-nav') %>
+        <div class="container">
+            <main class="main--groceries">
+                <div class="grid-row">
+                    <div class="large-screen-left">
+                        <h1 class="page-heading">My Pantry</h1>
+                        <p class="page-text">
+                            Use your pantry to keep track of your pantry
+                            preferences. We use these to recommend relevant
+                            recipes to you!
+                        </p>
+                        <p class="page-text">
+                            You can find more items to add to your pantry in our
+                            grocery catalogue! Just click “see all” to see all
+                            of the items in a category&apos;s catalogue. You can
+                            add these items to your pantry.
+                        </p>
+
+                        <section class="section-categories">
+                            <!-- <form class="section-categories__search-form">
+                                <input type="search" name="" id="" />
+                            </form> -->
+                            <ul
+                                id="grocery-categories-list"
+                                class="section-categories__list unstyled-list"
+                            >
+                                <li>
+                                    <!-- These lis are likely going to hold more than the button -->
+                                    <button
+                                        class="button btn-categories produce"
+                                        data-category="produce"
+                                    >
+                                        Produce
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        class="button btn-categories dairy"
+                                        data-category="dairy"
+                                    >
+                                        Dairy
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        class="button btn-categories plant-protein"
+                                        data-category="plant-protein"
+                                    >
+                                        Plant-based Protein
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        class="button btn-categories bread-grain-cereal"
+                                        data-category="bread-grain-cereal"
+                                    >
+                                        Bread, Grains & Cereal
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        class="button btn-categories seasoning"
+                                        data-category="seasoning"
+                                    >
+                                        Seasoning
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        class="button btn-categories beans-and-legumes"
+                                        data-category="beans-and-legumes"
+                                    >
+                                        Beans and Legumes
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        class="button btn-categories meat-seafood-eggs"
+                                        data-category="meat-seafood-eggs"
+                                    >
+                                        Meat, Seafood & eggs
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        class="button btn-categories seeds-nuts-oils"
+                                        data-category="seeds-nuts-oils"
+                                    >
+                                        Seeds, Nuts, Oils
+                                    </button>
+                                </li>
+                            </ul>
+                            <p>
+                                If you have run out of an item, you can search
+                                for prices and add items to your shopping list
+                                using the search results.
+                            </p>
+                        </section>
+                    </div>
+                    <section class="large-screen-right pantry-section">
+                        <h2 class="section-heading">My pantry</h2>
+                        <div class="user-pantry">
+                            <div
+                                id="pantry-items-card"
+                                class="pantryItemsCard"
+                                data-hidden=""
+                            >
+                                <div class="pantry-items-card-top">
+                                    <h3
+                                        id="pantry-category-heading"
+                                        class="heading"
+                                    >
+                                        Pantry Items
+                                    </h3>
+                                    <button
+                                        data-show-products="db"
+                                        data-list-id="db-grocery-list-wrapper"
+                                        class="button btn-card btn-pantry-display"
+                                    >
+                                        All
+                                    </button>
+                                    <button
+                                        data-show-products="user"
+                                        data-list-id="user-grocery-list-wrapper"
+                                        class="button btn-card btn-pantry-display"
+                                        data-button-hidden=""
+                                    >
+                                        Back
+                                    </button>
+                                </div>
+                                <div
+                                    class="list-wrapper"
+                                    id="pantry-items-list-wrapper"
+                                >
+                                    <ul
+                                        class="grocery-items db-grocery-items"
+                                        id="db-grocery-list-wrapper"
+                                    ></ul>
+                                    <ul
+                                        class="grocery-items user-grocery-items"
+                                        id="user-grocery-list-wrapper"
+                                        data-hidden=""
+                                    ></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grocerySearch">
+                            <!-- grocery search results -->
+                            <div
+                                class="offcanvas offcanvas-start grocery-search-offcanvas"
+                                tabindex="-1"
+                                id="grocery-search-offcanvas"
+                                data-bs-scroll="true"
+                                aria-label="Grocery Search Results"
+                            >
+                                <div class="offcanvas-header">
+                                    <button
+                                        type="button"
+                                        class="button close-button btn-round"
+                                        data-bs-dismiss="offcanvas"
+                                        aria-label="Close"
+                                    >
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                                <div class="offcanvas-body">
+                                    <div class="grocery-search-result-display">
+                                        <h5 class="heading">Search results</h5>
+                                        <div id="grocery-search-result-wrapper">
+                                            <!-- Here in lies the search result of a scrape operation -->
+                                        </div>
+
+                                        <button
+                                            class="button btn-large btn-accent"
+                                            id="shopping-list-toggle-search"
+                                        >
+                                            See Shopping List
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            id="shopping-list-wrapper"
+                            class="shopping-list-wrapper"
+                        >
+                            <div class="shopping-list-header">
+                                <h3 class="heading">Shopping List</h3>
+                                <button
+                                    aria-label="Close"
+                                    class="button close-button btn-round close-button--white"
+                                    id="shopping-list-close-button"
+                                >
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                            <ul
+                                id="shopping-list"
+                                class="shopping-list unstyled-list"
+                            ></ul>
+                        </div>
+                        <button
+                            id="shopping-list-toggle"
+                            class="button btn-large btn-shopping-list-toggle"
+                        >
+                            See Shopping List
+                        </button>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <%- include('../includes/main-footer') %>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"
+        ></script>
+        <script src="../../../js/menu.js"></script>
+
+        <script src="../../../js/groceryPageInteractions.js"></script>
+    </body>
+</html>

@@ -1,0 +1,381 @@
+@use "./mixins" as *;
+
+.main--groceries {
+    margin-top: 20rem;
+
+    .grid-row {
+        @include media(desktop) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 10%;
+        }
+    }
+
+    .page-heading {
+        &:after {
+            @include pseudoElementUnderline($color: var(--jacarta));
+            max-width: 36rem;
+        }
+    }
+
+    .page-text {
+        margin-block: 1.43rem;
+    }
+}
+
+.pantry-section {
+    max-width: 572px;
+    margin: 0 auto;
+    // border: 1px solid;
+    @include media(desktop) {
+        margin: initial;
+    }
+    .section-heading {
+        font-size: 2rem;
+        background-color: white;
+        margin-bottom: 0;
+        border: 9px solid;
+        border-bottom: none;
+        padding-inline-start: 3rem;
+    }
+}
+
+.section-categories__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-block: 2.5rem;
+}
+
+// .user-pantry {
+//     max-width: 547px;
+//     .top-shelf {
+//         border: 1px solid;
+//         height: 220px;
+//         background-image: url("../../../images/Group 34.svg");
+//         background-size: contain;
+//         display: flex;
+//         justify-content: space-evenly;
+//         align-items: center;
+//         // background-position: center;
+//         background-repeat: no-repeat;
+//     }
+
+//     .drawer button {
+//         font-size: 1.25rem;
+//         line-height: 1;
+//         font-weight: 500;
+//     }
+// }
+
+.user-pantry {
+    border: 9px solid;
+    min-height: 691px;
+    background-image: url("../../../images/pantryshelf.svg");
+    background-color: white;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: 0%;
+    position: relative;
+}
+
+.pantryItemsCard {
+    border: 1px solid;
+    position: absolute;
+    width: 95%;
+    max-width: 550px;
+    height: 411px;
+    right: calc(0px - 9px);
+    top: 8rem;
+    background-color: var(--white);
+    padding: 1.875rem;
+    border-radius: 1.875rem;
+    box-shadow: 12px 12px 15px #00000041;
+
+    .pantry-items-card-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        > .heading {
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 24px;
+
+            .removable-text[data-hidden] {
+                display: none;
+            }
+        }
+        // This controls the visibilty of the menu button when each of them is clicked on
+        > .btn-pantry-display {
+            &[data-button-hidden] {
+                display: none;
+            }
+        }
+    }
+
+    &[data-hiding] {
+        animation: moveAndFadeOut 0.4s ease forwards;
+    }
+
+    &[data-hidden] {
+        display: none;
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    &[data-showing] {
+        animation: moveAndFadeIn 0.4s ease forwards;
+    }
+
+    &[data-shown] {
+        display: block;
+    }
+}
+
+.shopping-list-wrapper {
+    border: 1px solid;
+    position: fixed;
+    z-index: 14;
+    bottom: 0;
+    left: 5%;
+    width: 95%;
+    max-width: 500px;
+    padding-inline: 0.4rem;
+    height: 505px;
+    background-color: var(--jacarta);
+    color: var(--white);
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+    display: none;
+    .shopping-list-header {
+        display: flex;
+        padding-inline: 1.2rem;
+        align-items: baseline;
+        justify-content: space-between;
+    }
+    .heading {
+        font-size: 1.375rem;
+        padding-block: 2.06rem;
+        padding-bottom: 1.125rem;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
+
+    .shopping-list {
+        height: 405px;
+        overflow-y: auto;
+    }
+
+    &[data-shown] {
+        display: block;
+        animation: slideUpFadeIn 0.4s ease forwards;
+    }
+
+    &[data-hiding] {
+        animation: slideDownFadeOut 0.4s ease forwards;
+    }
+
+    &[data-hidden] {
+        display: none;
+    }
+}
+
+.shopping-list-item {
+    background-color: white;
+    color: var(--jacarta);
+    padding: 1.2rem;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.93rem;
+    line-height: 1.4;
+}
+
+.grocery-items {
+    margin-top: 1rem;
+    height: 230px;
+    overflow-y: scroll;
+
+    &[data-hidden] {
+        display: none;
+    }
+    .grocery-item {
+        padding: 0.875rem 1.3rem;
+        padding-left: 0;
+        font-size: 1.25rem;
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) auto;
+        .btn-grocery-menu-reveal {
+            justify-self: end;
+            align-self: center;
+        }
+
+        .btn-pantry-display-add-btn {
+            justify-self: center;
+        }
+        .notification-text {
+            display: block;
+            color: var(--deep-teal);
+            font-size: 0.875rem;
+            align-self: center;
+            &[data-success] {
+                color: var(--deep-teal);
+            }
+            &[data-error] {
+                color: var(--burnt-orange);
+            }
+        }
+        &[data-saving-item=""],
+        &[data-deleting-item=""] {
+            .button {
+                display: none;
+            }
+        }
+    }
+    .grocery-item-menu {
+        position: absolute;
+        top: 16px;
+        right: 0;
+        transform: translateY(15%);
+        display: none;
+
+        &[data-category-menu-visible] {
+            display: block;
+            z-index: 4;
+        }
+
+        li {
+            .button {
+                border-radius: 0px;
+            }
+            &:first-of-type {
+                .button {
+                    padding-top: 20px;
+                    border-top-left-radius: 7px;
+                    border-top-right-radius: 7px;
+                    padding-bottom: 10px;
+                }
+            }
+            &:last-of-type {
+                .button {
+                    padding-top: 10px;
+                    border-bottom-left-radius: 7px;
+                    border-bottom-right-radius: 7px;
+                    padding-bottom: 20px;
+                }
+            }
+        }
+    }
+}
+
+.grocery-search-offcanvas {
+    background-color: var(--ivory);
+    max-width: 500px;
+    width: 96% !important;
+}
+
+.grocery-search-result-display {
+    border: 1px solid var(--burnt-orange);
+    color: var(--jacarta);
+    background-color: var(--white);
+    font-size: 1.25rem;
+    border-radius: 1.56rem;
+    height: 40rem;
+    box-shadow: 4px 4px 14px #00000026;
+
+    > .heading {
+        padding-top: 1.625rem;
+        padding-left: 2rem;
+        color: var(--burnt-orange);
+    }
+
+    .search-result-list {
+        height: 30rem;
+
+        overflow-y: scroll;
+    }
+    .error-text {
+        padding-inline: 2rem 0.5rem;
+        padding-block: 1.5rem;
+        line-height: 1.5;
+    }
+
+    .search-result {
+        // display: grid;
+        // grid-template-columns: repeat(2, 1fr);
+        // grid-template-rows: auto auto;
+        margin-bottom: 1.5rem;
+        padding-inline: 2rem 0.5rem;
+        // .search-result-info {
+        //     display: grid;
+        //     grid-template-columns: subgrid;
+        //     grid-column: 1/-1;
+        // }
+        .info {
+            display: grid;
+            row-gap: 0.7rem;
+            margin-bottom: 0.7rem;
+        }
+        .actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        a {
+            color: inherit;
+        }
+    }
+
+    .btn-large {
+        margin-inline: auto;
+        display: block;
+    }
+}
+
+@keyframes moveAndFadeIn {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes moveAndFadeOut {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideUpFadeIn {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDownFadeOut {
+    0% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}

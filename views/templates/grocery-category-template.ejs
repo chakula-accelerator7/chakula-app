@@ -1,0 +1,102 @@
+<ul
+    class="grocery-items db-grocery-items unstyled-list"
+    id="db-grocery-list-wrapper"
+    data-hidden=""
+>
+    <% appGroceries.forEach(item => { %>
+    <li
+        class="grocery-item grocery-item-db"
+        id="app-groceryItem-menu-<%= item._id %>"
+    >
+        <%= item.name %>
+        <button
+            class="button btn-card btn-pantry-display"
+            data-pantry-add="<%= item._id %>"
+        >
+            <i class="fa-solid fa-plus"></i>
+            <span>Add to pantry</span>
+        </button>
+        <button
+            class="button btn-menu btn-grocery-menu-reveal"
+            data-menu-reveal="app-groceryItem-menu-<%= item._id %>"
+        >
+            <i class="fa-solid fa-ellipsis"></i>
+        </button>
+        <span class="notification-text"></span>
+        <ul class="unstyled-list grocery-item-menu">
+            <li>
+                <button
+                    data-search-grocery-id="<%= item._id %>"
+                    class="button btn-menu btn-grocery-menu-select"
+                >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search</span>
+                </button>
+            </li>
+            <li>
+                <button
+                    data-shopping-list-add="<%= item._id %>"
+                    class="button btn-menu btn-grocery-menu-select"
+                >
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Add to shopping list</span>
+                </button>
+            </li>
+        </ul>
+    </li>
+    <% }) %>
+</ul>
+<ul
+    class="grocery-items user-grocery-items unstyled-list"
+    id="user-grocery-list-wrapper"
+>
+    <% if(userGroceries.length <= 0) {%>
+    <li class="grocery-item">
+        You have not added any groceries to items in this category
+    </li>
+    <% } else { %> <% userGroceries.forEach(item => { %>
+    <li
+        class="grocery-item grocery-item-user"
+        id="user-groceryItem-menu-<%= item._id %>"
+    >
+        <%= item.name %>
+        <button
+            class="button btn-card btn-pantry-display btn-pantry-display-add-btn"
+            aria-label="Add to shopping list"
+            data-shopping-list-add="<%= item._id %>"
+        >
+            Add to shopping list
+            <i class="fa-solid fa-plus"></i>
+        </button>
+
+        <button
+            class="button btn-menu btn-grocery-menu-reveal"
+            data-menu-reveal="user-groceryItem-menu-<%= item._id %>"
+        >
+            <i class="fa-solid fa-ellipsis"></i>
+        </button>
+        <span class="notification-text"></span>
+        <ul class="unstyled-list grocery-item-menu">
+            <li>
+                <button
+                    class="button btn-menu btn-grocery-menu-select btn-grocery-menu-delete-btn"
+                    aria-label="Remove from pantry"
+                    data-delete-pantry-item="<%= item._id%>"
+                >
+                    <i class="fa-solid fa-minus"></i>
+                    Delete
+                </button>
+            </li>
+            <li>
+                <button
+                    data-search-grocery-id="<%= item._id %>"
+                    class="button btn-menu btn-grocery-menu-select"
+                >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search</span>
+                </button>
+            </li>
+        </ul>
+    </li>
+    <% }) %> <% } %>
+</ul>
