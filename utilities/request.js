@@ -23,7 +23,7 @@ async function spoonacularResponse(query) {
 
     const response = await fetch(url, {
         headers: {
-            "x-api-key": "17aeb975ae9d4760911c16a4ed1e49ab",
+            "x-api-key": process.env.SPOONACULAR_API_KEY,
         },
     });
 
@@ -59,59 +59,75 @@ const recipeListFormat = [
 
 async function completions(prompt) {
     console.log(prompt);
-    const completions = await openai.chat.completions.create({
-        messages: [
-            {
-                role: "system",
-                content: `Generate 3 healthy recipes based on the pantry items and calorie allowance given and display the nutritional information afterwards. Take dietary preferences into account. If the nutritional information is a range present the upper limit of the range. Include specific ingredient quantities for example 2 slices of bread. All numeric values should always be presented as a number. For example 270 instead of 270kcal, 35 instead of 35 minutes. Use as many of the pantry items in the recipes as possible. It is absolutely mandatory that the output shall always be in this exact shape ${JSON.stringify(
-                    recipeListFormat
-                )} where each recipe is an object that has the properties included. It is absolutely mandatory that there is no additional text above or below the json object presented. This object is going to be directly parsed and fed into another source, and so the response should be a stringified javascript object in the provided shape`,
-            },
-            {
-                role: "user",
-                content: prompt,
-            },
-        ],
-        model: "gpt-3.5-turbo",
-    });
+    try {
+        const completions = await openai.chat.completions.create({
+            messages: [
+                {
+                    role: "system",
+                    content: `Generate 3 healthy recipes based on the pantry items and calorie allowance given and display the nutritional information afterwards. Take dietary preferences into account. If the nutritional information is a range present the upper limit of the range. Include specific ingredient quantities for example 2 slices of bread. All numeric values should always be presented as a number. For example 270 instead of 270kcal, 35 instead of 35 minutes. Use as many of the pantry items in the recipes as possible. It is absolutely mandatory that the output shall always be in this exact shape ${JSON.stringify(
+                        recipeListFormat
+                    )} where each recipe is an object that has the properties included. It is absolutely mandatory that there is no additional text above or below the json object presented. This object is going to be directly parsed and fed into another source, and so the response should be a stringified javascript object in the provided shape`,
+                },
+                {
+                    role: "user",
+                    content: prompt,
+                },
+            ],
+            model: "gpt-3.5-turbo",
+        });
 
-    const response = completions.choices[0].message.content;
+        const response = completions.choices[0].message.content;
 
-    const recipeList = JSON.parse(response);
+        const recipeList = JSON.parse(response);
 
-    console.log(typeof recipeList);
+        console.log(typeof recipeList);
 
-    const prompts = recipeList.map((recipe) => recipe.promptToGenerateImage);
+        if (typeof recipeList !== "object" || !Array.isArray(recipeList)) {
+            throw new Error(
+                "There has been an error generating recipes. Please try again in a few minutes"
+            );
+        }
 
-    const images = await Promise.all(
-        prompts.map((text) => {
-            return createImage(text);
-        })
-    );
-
-    const finalRecipeList = recipeList.map((recipe, index) => {
-        delete recipe.promptToGenerateImage;
-        const b64Image = images[index].data[0].b64_json;
-        const imageStrBuffer = Buffer.from(
-            images[index].data[0].b64_json,
-            "base64"
+        const prompts = recipeList.map(
+            (recipe) => recipe.promptToGenerateImage
         );
 
-        return {
-            ...recipe,
-            imageData: b64Image,
-            imageStrBuffer,
-            macronutrientInfo: {
-                ...recipe.macronutrientInfo,
-                calories: parseInt(recipe.macronutrientInfo.calories),
-                protein: parseFloat(recipe.macronutrientInfo.protein),
-                carbohydrate: parseFloat(recipe.macronutrientInfo.carbohydrate),
-                fat: parseFloat(recipe.macronutrientInfo.fat),
-            },
-        };
-    });
+        const images = await Promise.all(
+            prompts.map((text) => {
+                return createImage(text);
+            })
+        );
 
-    return finalRecipeList;
+        const finalRecipeList = recipeList.map((recipe, index) => {
+            delete recipe.promptToGenerateImage;
+            const b64Image = images[index].data[0].b64_json;
+            const imageStrBuffer = Buffer.from(
+                images[index].data[0].b64_json,
+                "base64"
+            );
+
+            return {
+                ...recipe,
+                imageData: b64Image,
+                imageStrBuffer,
+                macronutrientInfo: {
+                    ...recipe.macronutrientInfo,
+                    calories: parseInt(recipe.macronutrientInfo.calories),
+                    protein: parseFloat(recipe.macronutrientInfo.protein),
+                    carbohydrate: parseFloat(
+                        recipe.macronutrientInfo.carbohydrate
+                    ),
+                    fat: parseFloat(recipe.macronutrientInfo.fat),
+                },
+            };
+        });
+
+        return finalRecipeList;
+    } catch (error) {
+        return Promise.reject(
+            "There has been an error generating recipes. Please try again in a few minutes"
+        );
+    }
 }
 
 // testCompletions

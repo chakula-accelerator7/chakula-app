@@ -2,6 +2,12 @@
 
 .section-entry-survey {
     margin-top: 20rem;
+
+    .page-heading {
+        span {
+            display: block;
+        }
+    }
 }
 
 .form-entry-survey {
@@ -12,24 +18,74 @@
         input[type="number"],
         select {
             // margin-top: 1.2rem;
-            margin-top: 12px;
             padding: 12px;
             border-radius: 45px;
             border-color: transparent;
             box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.15);
         }
 
-        .units {
-            display: none;
+        input[type="number"] {
+            &[data-error="true"] {
+                background-color: rgba(255, 0, 0, 0.3);
+            }
         }
 
         // grid-template-columns: repeat(auto-fit, minmax(425px, 1fr));
     }
+    .survery-question-has-input {
+        grid-template-columns: 0.4fr 1fr;
+        align-items: center;
+        margin-bottom: 5.8rem;
+
+        &:last-of-type {
+            // margin-bottom: 0;
+        }
+
+        .units {
+            justify-self: center;
+        }
+
+        @include media(tablet) {
+            grid-template-columns: 0.4fr 1fr 0.4fr;
+        }
+
+        .hidden-small {
+            display: none;
+            @include media(tablet) {
+                display: initial;
+            }
+        }
+
+        .hidden-large {
+            @include media(tablet) {
+                display: none;
+            }
+        }
+    }
 
     .question-group {
-        flex-grow: 1;
-        flex-shrink: 0;
-        width: 100%;
+        // border: 1px solid;
+        .error-element {
+            color: var(--burnt-sienna);
+            display: none;
+        }
+
+        &[data-currently-shown="false"] {
+            opacity: 0;
+            display: none;
+        }
+
+        &[data-currently-shown="true"] {
+            opacity: 1;
+            display: block;
+            animation: 0.3s ease-in normal forwards fade-in;
+        }
+
+        &[data-error-shown] {
+            .error-element {
+                display: block;
+            }
+        }
     }
 
     .question-group-wrapper {
@@ -41,15 +97,19 @@
     }
 
     .survery-question-has-checkbox-radio {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 2.625rem;
-        row-gap: 0.6875rem;
+        grid-template-columns: 0.5fr 1fr;
+        .labels-group {
+            display: grid;
+        }
+        .labels-group-split {
+            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(296px, 1fr));
+            column-gap: 2.625rem;
+            row-gap: 0.6875rem;
+        }
         .legend {
             margin-block: 1.1rem;
-            grid-column: 1/-1;
-            grid-row: 1/2;
-            justify-self: center;
+            justify-self: left;
         }
         label {
             border: 1px solid var(--carrot-orange);
@@ -63,6 +123,7 @@
                 border: 1px solid rgba(128, 128, 128, 0.282);
                 border-radius: 0.4rem;
                 place-items: center;
+                grid-area: checkbox;
                 &:after {
                     content: "";
                     background-color: transparent;
@@ -73,13 +134,16 @@
 
                 &:checked {
                     &:after {
-                        background-color: var(--burnt-orange);
+                        background-image: url("../../images/checkmark.svg");
+                        background-repeat: no-repeat;
+                        background-position: center;
                     }
                 }
             }
             display: grid;
-            grid-template-columns: auto 1.5em;
-            justify-content: center;
+            grid-template-columns: 1.5em 1fr;
+            grid-template-areas: " checkbox text ";
+            justify-content: start;
             align-items: center;
             column-gap: 3.25rem;
             padding: 1.25rem;
@@ -116,5 +180,15 @@
     select {
         width: 100%;
         display: block;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }

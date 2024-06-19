@@ -162,8 +162,9 @@ router.get("/app/setup-pantry", protect, async (req, res) => {
 router.post("/app/setup-pantry", protect, async (req, res) => {
     // console.log(req.body);
     const { ingredients } = req.body;
-
+    console.log(ingredients);
     console.log(typeof ingredients);
+
     const user = await User.findById(req.user.id);
 
     const groceryItemsId = (await GroceryItem.find()).map((item) => item._id);

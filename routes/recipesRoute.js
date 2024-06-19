@@ -86,37 +86,41 @@ router.get("/app/fetch-recipe", allowJwt, async (req, res) => {
     }`;
     // console.log(recipePrompt);
 
-    let recipeList = await completions(recipePrompt);
+    try {
+        let recipeList = await completions(recipePrompt);
 
-    // when recipe is generated it gets saved to database
+        // when recipe is generated it gets saved to database
 
-    let recentRecipes = [];
-    for (const recipe of recipeList) {
-        const newRecipe = new Recipe({
-            recipeName: recipe.recipeName,
-            ingredientList: recipe.ingredientList,
-            pantryIngredientsUsed: recipe.pantryIngredientsUsed,
-            unlistedIngredients: recipe.unlistedIngredients,
-            preparationInstructions: recipe.preparationInstructions,
-            preparationTime: recipe.preparationTime,
-            macronutrientInfo: recipe.macronutrientInfo,
-            image: recipe.imageStrBuffer,
+        let recentRecipes = [];
+        for (const recipe of recipeList) {
+            const newRecipe = new Recipe({
+                recipeName: recipe.recipeName,
+                ingredientList: recipe.ingredientList,
+                pantryIngredientsUsed: recipe.pantryIngredientsUsed,
+                unlistedIngredients: recipe.unlistedIngredients,
+                preparationInstructions: recipe.preparationInstructions,
+                preparationTime: recipe.preparationTime,
+                macronutrientInfo: recipe.macronutrientInfo,
+                image: recipe.imageStrBuffer,
+            });
+            await newRecipe.save();
+            recentRecipes.push(newRecipe.id);
+        }
+
+        const sentRecipes = recipeList.map((recipe, index) => {
+            return {
+                ...recipe,
+                _id: recentRecipes[index],
+            };
         });
-        await newRecipe.save();
-        recentRecipes.push(newRecipe.id);
+
+        res.render("./templates/recipes_AI", { recipeList: sentRecipes });
+        console.log("recipe sent");
+        recentRecipes = [];
+        console.log("temp cache cleared", recentRecipes);
+    } catch (error) {
+        res.status(500).render("./templates/recipes_AI_error");
     }
-
-    const sentRecipes = recipeList.map((recipe, index) => {
-        return {
-            ...recipe,
-            _id: recentRecipes[index],
-        };
-    });
-
-    res.render("./templates/recipes_AI", { recipeList: sentRecipes });
-    console.log("recipe sent");
-    recentRecipes = [];
-    console.log("temp cache cleared", recentRecipes);
 
     // res.send(recipeList);
 });

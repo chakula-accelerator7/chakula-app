@@ -42,13 +42,23 @@
                     <span class="nav-bar__menuTitle" id="menu-title">Menu</span>
                 </div>
                 <ul class="nav-bar__menu unstyled-list">
-                    <li><a class="nav-link" href="/landing/about">about</a></li>
                     <li>
-                        <a class="nav-link" href="/landing/pricing">pricing</a>
+                        <a
+                            class="nav-link <%= selected === 'about' ? 'selected' : '' %>"
+                            href="/landing/about"
+                            >about</a
+                        >
                     </li>
                     <li>
                         <a
-                            class="nav-link nav-link-register"
+                            class="nav-link <%= selected === 'pricing' ? 'selected' : '' %>"
+                            href="/landing/pricing"
+                            >pricing</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            class="nav-link nav-link-register <%= selected === 'register' ? 'selected' : '' %>"
                             href="/app/register"
                             >sign up</a
                         >

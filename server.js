@@ -14,7 +14,7 @@ const expressSession = require("express-session");
 const cookieParser = require("cookie-parser");
 
 require("dotenv").config();
-const port = process.env.PORT || 3700;
+const port = process.env.PORT || 3200;
 
 const MongoStore = require("connect-mongo");
 
