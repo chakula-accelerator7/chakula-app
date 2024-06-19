@@ -48,7 +48,10 @@ fetchButton.addEventListener("click", async (e) => {
 
         const html = await response.text();
         recipeContainer.innerHTML = html;
-    } catch (error) {}
+    } catch (error) {
+        const errorHTML = await response.text();
+        recipeContainer.innerHTML = errorHTML;
+    }
 });
 
 // This uses event delegation to save a recipe to a users collection of recipes whenever they click on the save button from recent recipe and when they click on the save button from generated recipes

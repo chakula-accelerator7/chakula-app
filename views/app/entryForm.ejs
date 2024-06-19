@@ -5,10 +5,13 @@
         <%- include('../includes/app-nav', {user: user}) %>
         <section class="section-entry-survey">
             <div class="container">
-                <h1>Welcome <%= user.name%></h1>
-                <h2>
-                    Please share some basic information with us to get started.
-                </h2>
+                <h1 class="page-heading">
+                    Welcome <%= user.name%>.
+                    <span
+                        >Please share some basic information with us to get
+                        started.</span
+                    >
+                </h1>
                 <form
                     id="form-entry-survey"
                     class="form-entry-survey"
@@ -21,10 +24,19 @@
                             data-group="bio"
                             data-currently-shown="true"
                         >
+                            <h3 class="error-element">
+                                You have some empty fields
+                            </h3>
                             <div
                                 class="survey-question survery-question-has-input"
                             >
-                                <label for="age"> Age </label>
+                                <label for="age" aria-labelledby="Age in years">
+                                    Age<span
+                                        class="units hidden-large"
+                                        aria-hidden="true"
+                                        >(Years)</span
+                                    >
+                                </label>
                                 <input
                                     id="age"
                                     type="number"
@@ -32,44 +44,79 @@
                                     min="18"
                                     max="80"
                                     placeholder="Enter Your Age"
+                                    required
+                                    data-error="false"
                                 />
-                                <span class="units">Years</span>
+                                <span
+                                    class="units hidden-small"
+                                    aria-hidden="true"
+                                    >(Years)</span
+                                >
                             </div>
                             <div
                                 class="survey-question survery-question-has-input"
                             >
-                                <label> Height </label>
+                                <label>
+                                    Height<span
+                                        class="units hidden-large"
+                                        aria-hidden="true"
+                                        >(CM)</span
+                                    >
+                                </label>
                                 <input
                                     type="number"
                                     name="height"
                                     min="55"
                                     max="250"
                                     placeholder="Enter your height"
+                                    required
+                                    data-error="false"
                                 />
-                                <span class="units">CM</span>
+                                <span
+                                    class="units hidden-small"
+                                    aria-hidden="true"
+                                    >(CM)</span
+                                >
                             </div>
                             <div
                                 class="survey-question survery-question-has-input"
                             >
-                                <label> Weight </label>
+                                <label>
+                                    Weight<span
+                                        class="units hidden-large"
+                                        aria-hidden="true"
+                                        >(KG)</span
+                                    >
+                                </label>
                                 <input
                                     type="number"
                                     name="weight"
                                     min="45"
                                     max="200"
+                                    data-error="false"
                                     placeholder="Enter your weight"
+                                    required
                                 />
-                                <span class="units">KG</span>
+                                <span
+                                    class="units hidden-small"
+                                    aria-hidden="true"
+                                    >(KG)</span
+                                >
                             </div>
-                            <div class="survey-question">
+                            <div
+                                class="survey-question survery-question-has-input"
+                            >
                                 <label>Gender</label>
-                                <select name="gender" value="">
+                                <select
+                                    name="gender"
+                                    value=""
+                                    data-error="false"
+                                >
                                     <option value="" disabled>
                                         What gender were you assigned at birth
                                     </option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
-                                    <option>Other...</option>
                                 </select>
                             </div>
                         </div>
@@ -78,6 +125,9 @@
                             data-group="diet"
                             data-currently-shown="false"
                         >
+                            <h3 class="error-element">
+                                You have some empty fields
+                            </h3>
                             <fieldset
                                 class="survey-question survery-question-has-checkbox-radio"
                             >
@@ -85,94 +135,96 @@
                                 <div class="legend" aria-hidden="true">
                                     Any Specific Intolerances
                                 </div>
-                                <label>
-                                    Dairy
-                                    <input
-                                        type="checkbox"
-                                        name="intolerances"
-                                        value="dairy"
-                                    />
-                                </label>
-                                <label>
-                                    Egg
-                                    <input
-                                        type="checkbox"
-                                        name="intolerances"
-                                        value="egg"
-                                    />
-                                </label>
-                                <label>
-                                    Gluten
-                                    <input
-                                        type="checkbox"
-                                        name="intolerances"
-                                        value="gluten"
-                                    />
-                                </label>
-                                <label>
-                                    Grain
-                                    <input
-                                        type="checkbox"
-                                        name="intolerances"
-                                        value="grain"
-                                    />
-                                </label>
-                                <label>
-                                    Peanut
-                                    <input
-                                        type="checkbox"
-                                        name="intolerances"
-                                        value="peanut"
-                                    />
-                                </label>
-                                <label>
-                                    Seafood
-                                    <input
-                                        type="checkbox"
-                                        name="intolerances"
-                                        value="seafood"
-                                    />
-                                </label>
-                                <label>
-                                    Sesame
-                                    <input
-                                        type="checkbox"
-                                        name="intolerances"
-                                        value="sesame"
-                                    />
-                                </label>
-                                <label>
-                                    Soy
-                                    <input
-                                        type="checkbox"
-                                        name="intolerances"
-                                        value="soy"
-                                    />
-                                </label>
-                                <label>
-                                    Sulfite
-                                    <input
-                                        type="checkbox"
-                                        name="intolerances"
-                                        value="sulfite"
-                                    />
-                                </label>
-                                <label>
-                                    Tree Nut
-                                    <input
-                                        type="checkbox"
-                                        name="intolerances"
-                                        value="tree nut"
-                                    />
-                                </label>
-                                <label>
-                                    Wheat
-                                    <input
-                                        type="checkbox"
-                                        name="intolerances"
-                                        value="wheat"
-                                    />
-                                </label>
+                                <div class="labels-group labels-group-split">
+                                    <label>
+                                        <span>Dairy</span>
+                                        <input
+                                            type="checkbox"
+                                            name="intolerances"
+                                            value="dairy"
+                                        />
+                                    </label>
+                                    <label>
+                                        Egg
+                                        <input
+                                            type="checkbox"
+                                            name="intolerances"
+                                            value="egg"
+                                        />
+                                    </label>
+                                    <label>
+                                        Gluten
+                                        <input
+                                            type="checkbox"
+                                            name="intolerances"
+                                            value="gluten"
+                                        />
+                                    </label>
+                                    <label>
+                                        Grain
+                                        <input
+                                            type="checkbox"
+                                            name="intolerances"
+                                            value="grain"
+                                        />
+                                    </label>
+                                    <label>
+                                        Peanut
+                                        <input
+                                            type="checkbox"
+                                            name="intolerances"
+                                            value="peanut"
+                                        />
+                                    </label>
+                                    <label>
+                                        Seafood
+                                        <input
+                                            type="checkbox"
+                                            name="intolerances"
+                                            value="seafood"
+                                        />
+                                    </label>
+                                    <label>
+                                        Sesame
+                                        <input
+                                            type="checkbox"
+                                            name="intolerances"
+                                            value="sesame"
+                                        />
+                                    </label>
+                                    <label>
+                                        Soy
+                                        <input
+                                            type="checkbox"
+                                            name="intolerances"
+                                            value="soy"
+                                        />
+                                    </label>
+                                    <label>
+                                        Sulfite
+                                        <input
+                                            type="checkbox"
+                                            name="intolerances"
+                                            value="sulfite"
+                                        />
+                                    </label>
+                                    <label>
+                                        Tree Nut
+                                        <input
+                                            type="checkbox"
+                                            name="intolerances"
+                                            value="tree nut"
+                                        />
+                                    </label>
+                                    <label>
+                                        Wheat
+                                        <input
+                                            type="checkbox"
+                                            name="intolerances"
+                                            value="wheat"
+                                        />
+                                    </label>
+                                </div>
                             </fieldset>
                         </div>
                         <div
@@ -180,6 +232,9 @@
                             data-group="meal"
                             data-currently-shown="false"
                         >
+                            <h3 class="error-element">
+                                You have some empty fields
+                            </h3>
                             <fieldset
                                 class="survey-question survery-question-has-checkbox-radio"
                             >
@@ -187,86 +242,88 @@
                                 <div class="legend" aria-hidden="true">
                                     Specific Dietary Requirments
                                 </div>
-                                <label>
-                                    Gluten Free
-                                    <input
-                                        type="checkbox"
-                                        name="diet"
-                                        value="gluten free"
-                                    />
-                                </label>
-                                <label>
-                                    Ketogenic
-                                    <input
-                                        type="checkbox"
-                                        name="diet"
-                                        value="ketogenic"
-                                    />
-                                </label>
-                                <label>
-                                    Vegetarian
-                                    <input
-                                        type="checkbox"
-                                        name="diet"
-                                        value="vegetarian"
-                                    />
-                                </label>
-                                <label>
-                                    Lacto-Vegetarian(No eggs)
-                                    <input
-                                        type="checkbox"
-                                        name="diet"
-                                        value="lacto-vegetarian"
-                                    />
-                                </label>
-                                <label>
-                                    Ovo-Vegetarian
-                                    <input
-                                        type="checkbox"
-                                        name="diet"
-                                        value="ovo-vegetarian"
-                                    />
-                                </label>
-                                <label>
-                                    Vegan
-                                    <input
-                                        type="checkbox"
-                                        name="diet"
-                                        value="vegan"
-                                    />
-                                </label>
-                                <label>
-                                    Pescetarian
-                                    <input
-                                        type="checkbox"
-                                        name="diet"
-                                        value="pescatarian"
-                                    />
-                                </label>
-                                <label>
-                                    Paleo
-                                    <input
-                                        type="checkbox"
-                                        name="diet"
-                                        value="paleo"
-                                    />
-                                </label>
-                                <label>
-                                    Primal
-                                    <input
-                                        type="checkbox"
-                                        name="diet"
-                                        value="primal"
-                                    />
-                                </label>
-                                <label>
-                                    Low FODMAP
-                                    <input
-                                        type="checkbox"
-                                        name="diet"
-                                        value="Low FODMOP"
-                                    />
-                                </label>
+                                <div class="labels-group labels-group-split">
+                                    <label>
+                                        Gluten Free
+                                        <input
+                                            type="checkbox"
+                                            name="diet"
+                                            value="gluten free"
+                                        />
+                                    </label>
+                                    <label>
+                                        Ketogenic
+                                        <input
+                                            type="checkbox"
+                                            name="diet"
+                                            value="ketogenic"
+                                        />
+                                    </label>
+                                    <label>
+                                        Vegetarian
+                                        <input
+                                            type="checkbox"
+                                            name="diet"
+                                            value="vegetarian"
+                                        />
+                                    </label>
+                                    <label>
+                                        Lacto-Vegetarian(No eggs)
+                                        <input
+                                            type="checkbox"
+                                            name="diet"
+                                            value="lacto-vegetarian"
+                                        />
+                                    </label>
+                                    <label>
+                                        Ovo-Vegetarian
+                                        <input
+                                            type="checkbox"
+                                            name="diet"
+                                            value="ovo-vegetarian"
+                                        />
+                                    </label>
+                                    <label>
+                                        Vegan
+                                        <input
+                                            type="checkbox"
+                                            name="diet"
+                                            value="vegan"
+                                        />
+                                    </label>
+                                    <label>
+                                        Pescetarian
+                                        <input
+                                            type="checkbox"
+                                            name="diet"
+                                            value="pescatarian"
+                                        />
+                                    </label>
+                                    <label>
+                                        Paleo
+                                        <input
+                                            type="checkbox"
+                                            name="diet"
+                                            value="paleo"
+                                        />
+                                    </label>
+                                    <label>
+                                        Primal
+                                        <input
+                                            type="checkbox"
+                                            name="diet"
+                                            value="primal"
+                                        />
+                                    </label>
+                                    <label>
+                                        Low FODMAP
+                                        <input
+                                            type="checkbox"
+                                            name="diet"
+                                            value="Low FODMOP"
+                                        />
+                                    </label>
+                                </div>
                             </fieldset>
                         </div>
                         <div
@@ -274,48 +331,58 @@
                             data-group="fitness"
                             data-currently-shown="false"
                         >
+                            <h3 class="error-element">
+                                You have some empty fields
+                            </h3>
                             <fieldset
-                                class="survey-question survery-question-has-checkbox-radio survery-question-has-radio"
+                                class="survey-question survery-question-has-checkbox-radio"
                             >
                                 <legend>How active are you</legend>
                                 <div class="legend" aria-hidden="true">
                                     How active are you
                                 </div>
-                                <label
-                                    >Sedentary(little or no exercise)<input
-                                        type="radio"
-                                        name="exercise"
-                                        value="little"
-                                /></label>
-                                <label
-                                    >Lightly active (light exercise or sports
-                                    1-3 days a week)<input
-                                        type="radio"
-                                        checked
-                                        name="exercise"
-                                        value="light"
-                                /></label>
-                                <label
-                                    >Moderately active (moderate exercise or
-                                    sports 3-5 days a week)<input
-                                        type="radio"
-                                        name="exercise"
-                                        value="moderate"
-                                /></label>
-                                <label
-                                    >Very active (hard exercise or sports 6-7
-                                    days a week)<input
-                                        type="radio"
-                                        name="exercise"
-                                        value="heavy"
-                                /></label>
-                                <label
-                                    >Extra active (very hard exercise or sports,
-                                    physical job or training twice a day)<input
-                                        type="radio"
-                                        name="exercise"
-                                        value="veryHeavy"
-                                /></label>
+                                <div class="labels-group">
+                                    <label
+                                        >Sedentary(little or no exercise)<input
+                                            type="radio"
+                                            name="exercise"
+                                            value="little"
+                                    /></label>
+                                    <label
+                                        >Lightly active (light exercise or
+                                        sports 1-3 days a week)<input
+                                            type="radio"
+                                            checked
+                                            name="exercise"
+                                            value="light"
+                                    /></label>
+                                    <label
+                                        >Moderately active (moderate exercise or
+                                        sports 3-5 days a week)<input
+                                            type="radio"
+                                            name="exercise"
+                                            value="moderate"
+                                    /></label>
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="exercise"
+                                            value="heavy"
+                                        />
+                                        Very active (hard exercise or sports 6-7
+                                        days a week)
+                                    </label>
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="exercise"
+                                            value="veryHeavy"
+                                        />
+                                        Extra active (very hard exercise or
+                                        sports, physical job or training twice a
+                                        day)
+                                    </label>
+                                </div>
                             </fieldset>
                         </div>
                         <div
@@ -324,45 +391,69 @@
                             data-group="goal"
                             data-currently-shown="false"
                         >
+                            <h3 class="error-element">
+                                You have some empty fields
+                            </h3>
                             <fieldset
-                                class="survey-question survey-question survery-question-has-checkbox-radio survery-question-has-radio"
+                                class="survey-question survery-question-has-checkbox-radio"
                             >
                                 <legend>What's your aim</legend>
                                 <div class="legend" aria-hidden="true">
                                     What's your aim
                                 </div>
-                                <label>
-                                    Lose weight (Calorie Deficit)
-                                    <input
-                                        type="radio"
-                                        name="goal"
-                                        checked
-                                        value="fatloss_moderate"
-                                    />
-                                </label>
-                                <label>
-                                    Maintain current weight
-                                    <input
-                                        type="radio"
-                                        name="goal"
-                                        value="maintenance"
-                                    />
-                                </label>
-                                <label>
-                                    Bulking at a normal pace
-                                    <input
-                                        type="radio"
-                                        name="goal"
-                                        value="bulking_normal"
-                                    />
-                                </label>
+                                <div class="labels-group">
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="goal"
+                                            checked
+                                            value="fatloss_moderate"
+                                        />
+                                        Lose weight (Calorie Deficit)
+                                    </label>
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="goal"
+                                            value="maintenance"
+                                        />
+                                        Maintain current weight
+                                    </label>
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="goal"
+                                            value="bulking_normal"
+                                        />
+                                        Bulking at a normal pace
+                                    </label>
+                                </div>
                             </fieldset>
                         </div>
                     </div>
                     <div class="button-grp">
-                        <button id="next-group" type="button">Previous</button>
-                        <button class="btn btn-accent">Submit Survey</button>
-                        <button id="previous-group" type="button">Next</button>
+                        <button
+                            class="btn btn-accent btn-form-survey"
+                            id="previous-group"
+                            type="button"
+                            disabled
+                        >
+                            Previous
+                        </button>
+                        <button
+                            id="survey-submit-btn"
+                            class="btn btn-accent btn-form-survey"
+                            disabled
+                        >
+                            Submit Survey
+                        </button>
+                        <button
+                            class="btn btn-accent btn-form-survey"
+                            id="next-group"
+                            type="button"
+                        >
+                            Next
+                        </button>
                     </div>
                 </form>
             </div>

@@ -152,12 +152,19 @@ i {
     &:hover {
         color: var(--deep-teal);
         background-color: var(--white);
+        text-decoration: none;
     }
 }
 
 .btn-round {
     border-radius: 50%;
     aspect-ratio: 1;
+}
+
+.btn-form-survey {
+    background-color: var(--jacarta);
+    color: white;
+    padding: 0.8rem;
 }
 
 .btn-scroll-features {
@@ -174,6 +181,16 @@ i {
         background-color: var(--white);
         color: var(--carrot-orange);
         text-decoration-color: transparent;
+    }
+
+    &:disabled {
+        background-color: hsl(26, 17%, 52%);
+        cursor: not-allowed;
+
+        &:hover {
+            background-color: hsl(26, 17%, 52%);
+            color: var(--white);
+        }
     }
 }
 

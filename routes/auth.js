@@ -31,6 +31,7 @@ router.get("/app/register", (req, res) => {
         return res.render("./app/register", {
             validationError: JSON.parse(decoded.toString()),
             message: false,
+            selected: "register",
         });
     }
 
@@ -38,9 +39,14 @@ router.get("/app/register", (req, res) => {
         return res.render("./app/register", {
             validationError: false,
             message,
+            selected: "register",
         });
     }
-    res.render("./app/register", { validationError: false, message: false });
+    res.render("./app/register", {
+        validationError: false,
+        message: false,
+        selected: "register",
+    });
 });
 
 router.get("/app/login", (req, res) => {
@@ -52,6 +58,7 @@ router.get("/app/login", (req, res) => {
         return res.render("./app/signIn", {
             validationError: JSON.parse(decoded.toString()),
             message: false,
+            selected: false,
         });
     }
 
@@ -59,10 +66,15 @@ router.get("/app/login", (req, res) => {
         return res.render("./app/signIn", {
             validationError: false,
             message,
+            selected: false,
         });
     }
 
-    res.render("./app/signIn", { validationError: false, message: false });
+    res.render("./app/signIn", {
+        validationError: false,
+        message: false,
+        selected: false,
+    });
 });
 
 function validateAcctHolderName() {

@@ -8,9 +8,7 @@ function allowJwt(req, res, next) {
         if (!user) {
             console.log(req.isAuthenticated());
 
-            return res.status(401).json({
-                message: "Access token expired or unathuorised access",
-            });
+            return res.status(401).render("./templates/tokenExp");
         }
         req.id = user.id;
         return next();
