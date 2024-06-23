@@ -7,6 +7,9 @@ const groceryItemScehma = new mongoose.Schema({
     name: { type: String, required: true },
     category: { type: String, required: true },
     pantryCategory: { type: String, required: true },
+    searchResults: [
+        { type: mongoose.Schema.Types.ObjectId, ref: "SearchResult" },
+    ],
 });
 
 // This is an idea that i was trying out to try to connect a shopping list item

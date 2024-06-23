@@ -1,8 +1,7 @@
 <% if(scrapedData.length <= 0) {%>
 
 <p class="error-text">
-    There was a problem retrieving results related to your search. Try again in
-    a little while.
+    We are still working on retrieving items related to your search
 </p>
 
 <%} else {%>
@@ -12,15 +11,13 @@
     <li class="search-result">
         <div class="info">
             <span class="product-name"><%= data.productName %></span>
-            <span class="product-price"
-                >Listed Price: <%= data.productPrice %></span
-            >
+            <span class="product-price">Listed Price: $<%= data.price %></span>
         </div>
         <div class="actions">
-            <a href="<%= data.storeUrl %>">Visit Store</a>
+            <a href="<%= data.siteUrl %>" target="_blank">Visit Store</a>
             <button
                 class="button btn-search"
-                data-add-shopping-list-from-search="<%= data.productName %>:<%= data.productPrice %>"
+                data-add-shopping-list-from-search="<%= data.productName %>:<%= data.price %>"
             >
                 <i class="fa-solid fa-plus"></i>Add to shopping list
             </button>

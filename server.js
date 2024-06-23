@@ -17,6 +17,7 @@ require("dotenv").config();
 const port = process.env.PORT || 3200;
 
 const MongoStore = require("connect-mongo");
+const { updateSearch } = require("./utilities/cronFunction");
 
 app.set("views", path.join(process.cwd(), "views"));
 app.set("view engine", "ejs");
@@ -57,6 +58,10 @@ mongoose
     .connect(process.env.MONGO_URL)
     .then(({ connection }) => {
         console.log(`Connected to ${connection.name}`);
+        console.log(`Scraper function will run at this point`);
+        updateSearch();
+    })
+    .then(() => {
         app.listen(port, () => {
             console.log("Listening ");
         });

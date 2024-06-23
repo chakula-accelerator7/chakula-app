@@ -441,7 +441,10 @@ grocerySearchResultsWrapper.addEventListener("click", async (e) => {
 });
 
 shoppingListToggler.addEventListener("click", toggleShoppingList);
-shoppingListTogglerSearch.addEventListener("click", toggleShoppingList);
+shoppingListTogglerSearch.addEventListener("click", () => {
+    toggleShoppingList();
+    grocerySearchCanvasInstance.hide();
+});
 
 async function toggleShoppingList(e) {
     // if the shopping list is visible ignore any click events
