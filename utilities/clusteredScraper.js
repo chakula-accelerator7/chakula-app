@@ -1,5 +1,6 @@
 const { Cluster } = require("puppeteer-cluster");
 const cheerio = require("cheerio");
+const { default: puppeteer } = require("puppeteer");
 
 async function genericLoblawsScraper({ page, data }) {
     const { searchTerm, url } = data;
@@ -89,6 +90,13 @@ async function runCluster(searchTerm) {
     const cluster = await Cluster.launch({
         concurrency: Cluster.CONCURRENCY_PAGE,
         maxConcurrency: 2,
+
+        puppeteerOptions: {
+            executablePath:
+                process.env.NODE_ENV === "production"
+                    ? process.env.PUPPETEER_EXECUTABLE_PATH
+                    : puppeteer.executablePath(),
+        },
         timeout,
     });
 
