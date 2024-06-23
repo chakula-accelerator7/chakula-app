@@ -1,226 +1,141 @@
 const { Cluster } = require("puppeteer-cluster");
-
 const cheerio = require("cheerio");
 
-async function scraperNoFrills({ page, data: sq }) {
+async function genericLoblawsScraper({ page, data }) {
+    const { searchTerm, url } = data;
+    const timeout = 120000;
     await page.setViewport({
-        width: 1024,
-        height: 1024,
+        width: 1200,
+        height: 1200,
+        deviceScaleFactor: 1,
     });
-
-    const siteUrl = "https://www.nofrills.ca/";
-    await page.goto(siteUrl, {
+    await page.goto(url, {
         waitUntil: "domcontentloaded",
     });
 
-    const input = await page.waitForSelector(
-        ".site-header .desktop-site-header__search-form input[type='text']"
-    );
-
-    await input.type(sq, { delay: 100 });
-
-    await Promise.all([
-        page.click(
-            ".site-header .desktop-site-header__search-form button[data-testid='submit-search']"
-        ),
-        page.waitForNavigation(),
-    ]);
-
-    await page.waitForSelector(`.product-grid__results`);
-    const results = await page.evaluate(() => {
-        const resultProductGrid = document.querySelector(
-            `.product-grid__results`
-        );
-        const html = resultProductGrid.innerHTML;
-        return html;
-    });
-
-    const $ = cheerio.load(results);
-    const products = $("ul.product-tile-group__list");
-    const lis = products.find("li.product-tile-group__list__item");
-
-    let productsArray = [];
-
-    lis.each((index, element) => {
-        const li = $(element);
-        const productTracking = li.find(".product-tracking");
-        const trackingArray = productTracking.attr("data-track-products-array");
-        const image = productTracking.find("img").prop("src");
-        const array = JSON.parse(trackingArray);
-        productsArray.push({ ...array[0], imageUrl: image, storeUrl: siteUrl });
-    });
-
-    const finalArray = productsArray
-        .filter((elem) => {
-            return elem.textBadge !== "low-stock";
-        })
-        .map(
-            ({
-                productName,
-                productBrand,
-                productPrice,
-                imageUrl,
-                storeUrl,
-            }) => {
-                return {
-                    productName,
-                    productBrand,
-                    productPrice,
-                    imageUrl,
-                    storeUrl,
-                };
-            }
-        )
-        .sort((a, b) => {
-            return Number(b.productPrice) - Number(a.productPrice);
-        })
-        .slice(0, 20);
-
-    // I also want each product image
-    // I should also include an option for if they decide to provide a location.
-    return finalArray;
-}
-
-async function scrapeLoblawsData({ page, data: sq }) {
-    await page.setViewport({
-        width: 1024,
-        height: 1024,
-    });
-
-    // await page.setUserAgent(
-    //     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
-    // );
-
-    const baseUrl = `https://www.loblaws.ca/`;
-
-    await page.goto(baseUrl);
-
-    const inputField = await page.waitForSelector(
-        ".site-header .desktop-site-header__search-form input[type='text']"
-    );
-
-    await inputField.type(sq, { delay: 100 });
-
-    await Promise.all([
-        page.click(
-            `.site-header .desktop-site-header__search-form button[type='submit']`
-        ),
-        page.waitForNavigation(),
-    ]);
-
+    // wait for input selector
     await page.waitForSelector(
-        "#site-content > div > div > div > div.product-grid.product-grid--cross-category-active > div.product-grid__results > div.product-grid__results__products"
+        `.desktop-site-header__search-form input[type="text"]`,
+        { timeout }
+    );
+    await page.type(
+        `.desktop-site-header__search-form input[type="text"]`,
+        searchTerm,
+        { delay: 100 }
     );
 
-    console.log("Found Selector");
+    await Promise.all([
+        page.waitForNavigation({ timeout }),
+        page.click(`.desktop-site-header__search-form button[type="submit"]`),
+    ]);
 
-    const html = await page.evaluate(() => {
-        const products = document.querySelector(
-            "#site-content > div > div > div > div.product-grid.product-grid--cross-category-active > div.product-grid__results > div.product-grid__results__products"
+    await page.waitForSelector(`.product-grid__results__products`, {
+        timeout,
+    });
+
+    const htmlString = await page.evaluate(() => {
+        const productGrid = document.querySelector(
+            ".product-grid__results__products"
         );
-        const html = products.innerHTML;
+        const html = productGrid.innerHTML;
         return html;
     });
 
-    // console.log(html);
+    const $ = cheerio.load(htmlString);
+    const lis = $(".product-tile-group__list__item");
 
-    const $ = cheerio.load(html);
+    let resultsArray = [];
 
-    const productsUl = $("div > ul");
-    console.log(productsUl.length);
-    const lis = productsUl.find(".product-tile-group__list__item");
-    console.log(lis.length);
-    const products = [];
-    lis.each((index, element) => {
-        const trackingDiv = $(element).find("div.product-tracking");
-        const productDetail = trackingDiv.attr("data-track-products-array");
+    lis.each((index, li) => {
+        const listItem = $(li);
+        const productTracking = listItem.find(".product-tracking");
+        const dataTrackProductsArray = productTracking.attr(
+            `data-track-products-array`
+        );
+        const productInfo = JSON.parse(dataTrackProductsArray)[0];
 
-        const image = trackingDiv.find("img.responsive-image").prop("src");
+        // console.log(resultArray);
 
-        const productDetailArray = JSON.parse(productDetail);
-        products.push({
-            ...productDetailArray[0],
-            imageUrl: image,
-            storeUrl: baseUrl,
-        });
+        const unitPriceElem = productTracking.find(
+            ".price__value.comparison-price-list__item__price__value"
+        );
+
+        const unitWeightElem = productTracking.find(
+            ".price__unit.comparison-price-list__item__price__unit"
+        );
+
+        const imageUrl = productTracking
+            .find("img.responsive-image.responsive-image--product-tile-image")
+            .prop("src");
+
+        const unitPrice = `${unitPriceElem.text()}${unitWeightElem.text()}`;
+        // resultsArray.push(unitPrice);
+
+        const result = {
+            name: productInfo.productName,
+            textBadge: productInfo.textBadge,
+            price: productInfo.productPrice,
+            unitPrice,
+            siteUrl: url,
+        };
+        resultsArray.push(result);
     });
-
-    const finalProducts = products
-        .filter((product) => {
-            return product.textBadge !== "low-stock";
-        })
-        .map(
-            ({
-                productName,
-                productBrand,
-                productPrice,
-                imageUrl,
-                storeUrl,
-            }) => {
-                return {
-                    productName,
-                    productBrand,
-                    productPrice,
-                    imageUrl,
-                    storeUrl,
-                };
-            }
-        )
-        .sort((a, b) => {
-            return Number(b.productPrice) - Number(a.productPrice);
-        })
-        .slice(0, 20);
-
-    console.log(finalProducts[0], "From loblaws");
-
-    return finalProducts;
+    // console.log(resultsArray[0]);
+    return resultsArray;
 }
 
-async function scraperFunction(searchQuery) {
-    console.log(`Search started`);
+async function runCluster(searchTerm) {
+    const timeout = 120000;
     const cluster = await Cluster.launch({
-        concurrency: Cluster.CONCURRENCY_CONTEXT,
+        concurrency: Cluster.CONCURRENCY_PAGE,
         maxConcurrency: 2,
-        puppeteerOptions: {
-            headless: true,
-        },
+        timeout,
     });
 
     let noFrillsData, loblawsData;
 
     try {
-        noFrillsData = await cluster.execute(searchQuery, scraperNoFrills);
+        noFrillsData = await cluster.execute(
+            { searchTerm, url: "https://www.nofrills.ca/" },
+            genericLoblawsScraper
+        );
+        loblawsData = await cluster.execute(
+            { searchTerm, url: "https://www.loblaws.ca/" },
+            genericLoblawsScraper
+        );
+        if (noFrillsData.length <= 0) {
+            throw new Error(
+                `Search for ${searchTerm} at no frills was unsuccessful`
+            );
+        }
+        if (loblawsData.length <= 0) {
+            throw new Error(
+                `Search for ${searchTerm} at no frills was unsuccessful`
+            );
+        }
     } catch (error) {
         console.log(error.message);
+        noFrillsData = [];
+        loblawsData = [];
     }
 
-    try {
-        loblawsData = await cluster.execute(searchQuery, scrapeLoblawsData);
-    } catch (error) {
-        console.log(error.message);
-    }
+    const results = [...noFrillsData, ...loblawsData]
+        .filter((result) => {
+            return result.textBadge !== "low-stock";
+        })
+        .sort((a, b) => {
+            return b.price - a.price;
+        })
+        .slice(0, 21);
 
-    let scrapedData = [];
-    if (noFrillsData) {
-        scrapedData = scrapedData.concat(noFrillsData);
-    }
+    console.log(results[0]);
 
-    if (loblawsData) {
-        scrapedData = scrapedData.concat(loblawsData);
-    }
-
-    scrapedData = scrapedData.sort((a, b) => {
-        return Number(b.productPrice) - Number(a.productPrice);
-    });
-
-    // console.log();
     await cluster.idle();
     await cluster.close();
-    return scrapedData;
+
+    return results;
 }
 
-// scrape("chicken");
+// runCluster("Eggs");
 
-module.exports = {
-    scraperFunction,
-};
+module.exports = { runCluster };

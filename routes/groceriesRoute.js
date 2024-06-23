@@ -106,16 +106,18 @@ router.get("/app/shopping-list", allowJwt, async (req, res) => {
 router.get("/app/scrape-price", allowJwt, async (req, res) => {
     const { groceryId } = req.query;
 
-    const grocery = await GroceryItem.findById(groceryId);
-    const searchQuery = grocery.name.toLowerCase();
+    const grocery = await GroceryItem.findById(groceryId).populate(
+        "searchResults"
+    );
+    const scrapedData = grocery.searchResults;
 
     // const scrapedData = await scraperFunction(searchQuery);
 
-    const dummyData = require("../utilities/dummyResponse.json");
+    // const dummyData = require("../utilities/dummyResponse.json");
 
     // console.log(req.query);
     res.render("./templates/searchResultTemplate", {
-        scrapedData: dummyData.loblaws.results,
+        scrapedData,
     });
 });
 
@@ -132,7 +134,7 @@ router.post("/app/shopping-list", allowJwt, async (req, res) => {
             return grocery.name === dbGrocery.name;
         });
         itemName = dbGrocery.name;
-        itemPrice = 0;
+        itemPrice = null;
     } else if (from === "search") {
         console.log(req.body);
         const { productName, productPrice } = req.body;
