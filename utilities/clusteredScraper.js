@@ -2,6 +2,8 @@ const { Cluster } = require("puppeteer-cluster");
 const cheerio = require("cheerio");
 const { default: puppeteer } = require("puppeteer");
 
+require("dotenv").config();
+
 async function genericLoblawsScraper({ page, data }) {
     const { searchTerm, url } = data;
     const timeout = 120000;
@@ -92,6 +94,12 @@ async function runCluster(searchTerm) {
         maxConcurrency: 2,
 
         puppeteerOptions: {
+            args: [
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--single-process",
+                "--no-zygote",
+            ],
             executablePath:
                 process.env.NODE_ENV === "production"
                     ? process.env.PUPPETEER_EXECUTABLE_PATH
